@@ -1,2 +1,5 @@
 # cursoweb
-Projetos de cursos web
+Aqui é o meu repositório dos Cursos Web que estou cursando e cursos já concluídos.<br>
+Fique à vontade para explorar!
+# update
+Estou realizando o curso Web Moderno com JS 2022 na Udemy
