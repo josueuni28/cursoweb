@@ -1,0 +1,22 @@
+{
+  "name": "webmoderno2022",
+  "version": "1.0.0",
+  "description": "Projetos do Curso Web Moderno com JS 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "web",
+    "vue",
+    "nodejs",
+    "oo",
+    "express",
+    "react",
+    "fundamentos",
+    "webpack"
+  ],
+  "author": "josueuni28",
+  "license": "MIT"
+}

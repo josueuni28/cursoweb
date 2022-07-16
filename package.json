@@ -1,0 +1,32 @@
+{
+  "name": "cursoweb",
+  "version": "1.0.0",
+  "description": "Biblioteca de todos os cursos web que estou cursando e concluídos",
+  "main": "index.js",
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josueuni28/cursoweb.git"
+  },
+  "keywords": [
+    "cursos",
+    "web",
+    "js",
+    "html",
+    "css",
+    "node",
+    "mongodb",
+    "express",
+    "vue",
+    "react",
+    "poo"
+  ],
+  "author": "josueuni28",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josueuni28/cursoweb/issues"
+  },
+  "homepage": "https://github.com/josueuni28/cursoweb#readme"
+}
