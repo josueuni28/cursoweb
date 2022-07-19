@@ -14,6 +14,7 @@ console.log(a)
 
 let b = 1
 
+// (Operadores unários)
 b++ // incrementa mais 1
 console.log(b)
 b-- // subtrai 1
