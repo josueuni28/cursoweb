@@ -1,7 +1,7 @@
 const notasAlunos = [9.5, 7.3, 6.1, 8.5, 5.4, 7.9]
 
 const somaNotas = notasAlunos.reduce(function (acumulador, valorAtual){
-    /* Reduce itera a condição informada em todos os elementos do array e retorna
+    /* Reduce itera/agrega a condição informada em todos os elementos do array e retorna
        o resultado de todas as iterações em um novo valor final */
     return acumulador + valorAtual
 })
