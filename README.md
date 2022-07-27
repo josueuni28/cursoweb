@@ -4,4 +4,4 @@ Fique à vontade para explorar!
 # update
 Estou realizando o curso Web Moderno com JS 2022 na Udemy
 # update 2
-Reoganização da pasta principal separando o conteúdo Node de JS
+Reoganização da pasta principal do curso **webmoderno2022** separando o conteúdo Node de JS
