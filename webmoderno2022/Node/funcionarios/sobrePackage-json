@@ -1,0 +1,24 @@
+Quando você instala uma dependência, você pode configurar como quer o NPM atualize aquela dependência
+no futuro. Todas as dependências possuem o formato de versão "semântico" com 3 números
+separados por pontos, ex: 0.19.2, (MAJOR.MINOR.PATCH), resumo:
+
+versão Maior(MAJOR): Quando fizer mudanças incompatíveis na API.
+versão Menor(MINOR): Quando adicionar funcionalidades mantendo compatibilidade.
+versão de Correção(PATCH): Quando corrigir falhas mantendo compatibilidade.
+
+O NPM fornece dois sufixos "^" e "~", para informar como aquela dependência deve ser atualizada.
+
+Se na dependência não tiver sufixo, significa que deve usar aquela versão exata.
+Se tiver o "~", significa que ele só atualizará o último número, a versão PATCH.
+Se tiver o "^", ele poderá também atualizar o número do meio (versão MINOR).
+
+É importante ficar ciente destes sufixos para observar se deve permitir mudanças na versão 
+das dependências do seu projeto e como elas devem acontecer.
+Existem outros sufixos, porém não são usual como:
+0.19.x (Semelhante ao "~" porém permite QUALQUER versão (nesse exmplo) na PATCH)
+>0.0.0 (Maior que a versão instalada)
+>=0.0.0 (Maior ou igual)
+<0.0.0 (Menor que a versão instalada)
+<=0.0.0 (Menor ou igual)
+* (Aceita qualquer versão)
+
