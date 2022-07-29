@@ -22,3 +22,6 @@ Existem outros sufixos, porém não são usual como:
 <=0.0.0 (Menor ou igual)
 * (Aceita qualquer versão)
 
+//---------------------------------------------------------------------------------
+
+Para executar um script que você criou basta digitar no console "npm run <nomeDoScript>"

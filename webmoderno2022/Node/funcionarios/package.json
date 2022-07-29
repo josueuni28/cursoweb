@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "myscript": "echo Para iniciar esse script basta digitar \"npm run myscript\n && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
