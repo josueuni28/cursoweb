@@ -27,16 +27,18 @@ const exec = (contexto, ...midlewares) => {
     execPasso(0)
 }
 
-const obj = {}, obj2 = {}, obj3 = {}
+const obj = {}, obj2 = {}, obj3 = {}, obj4 = {}
 
 exec(obj, passo1, passo2, passo3) // Seguindo uma ordem
 exec(obj2, passo2, passo1, passo3) // Fora da ordem
-exec(obj3, passo3, passo2, passo1) // Começando do último passo
+exec(obj3, passo1, passo3) // Omitindo um passo
+exec(obj4, passo3, passo2, passo1) // Começando do último passo
 
 /* Com o padrão middleware, não necessáriamente você fica preso a ordem
-   e as tarefas se tornam mais independentes, possíbilitando reusos em outros casos */
+   e as tarefas se tornam mais independentes e flexivéis, possíbilitando reusos em outros casos */
 
 // Resultados
 console.log(obj)
 console.log(obj2)
 console.log(obj3)
+console.log(obj4)
