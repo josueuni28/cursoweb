@@ -23,7 +23,7 @@
  * Que nesse exemplo, independente aonde ela foi chamada/associado, sempre o
  * "this" vai apontar para "window"
  * 
- * // O "this" nunca muda o contexto em que foi criado em um função Arrow
+ * // O "this" nunca muda o contexto em que foi criado em uma função Arrow
  */
 
 /**
