@@ -27,11 +27,11 @@ Existem outros sufixos, porém não são usual como:
 Para usar uma dependência específica usar o comando "npm i --save express@4.16.2 -E"
 Explicando o comando:
 O "i" é a abrevição de install,
-"--save" é para salvar como dependência,
+"--save" é para salvar como dependência, (Não é mais necessário)
 O "@4.16.2" é a especificação da versão,
 e o "-E" significa que você vai querer exatamente essa versão.
 
-Tem também um comando "-dev" que vem após o "--save", que serve para dizer que o
+Tem também um comando "-dev" que vem após o "--save"(Opcional), que serve para dizer que o
 módulo será usado somente no desenvolvimento e não como dependência na produção final
 Exempo o modulo "nodemon", se você tiver instalado ele apenas localmente o ideal é
 você como ele apenas como dependência de desenvolvimento, assim: npm i --save-dev nodemon
