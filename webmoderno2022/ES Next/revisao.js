@@ -55,3 +55,50 @@ function somaTodos(...numeros) {
 }
 
 console.log(somaTodos(1,5,9,10,5))
+
+/* ----------------------- Objects.values() e entries() ----------------------- */
+const obj = { a: 1, b:2, c:3 }
+
+console.log(Object.values(obj)) // Retorna apenas os valores das chaves
+console.log(Object.entries(obj)) // Retorna chaves e valores em formato de array
+
+/* ------------- Simplificação da Notações Literal em Objetos ----------------- */
+const sobrenome = 'Gonçalves'
+
+const pessoas = {
+    sobrenome, // Já cria diretamente um atributo, com a chave "sobrenome" e valor "Gonçalves"
+    falar(){ // Cria uma função diretamente, sem precisar informar a chave
+        console.log('Olá Mundo!')
+    }
+}
+
+console.log(pessoas.sobrenome, pessoas.falar())
+
+/* ----------------------- Classes ----------------------- */
+
+class Pessoa {
+    constructor(nome, sobrenome, idade){
+        this.nome = nome
+        this.sobrenome = sobrenome
+        this.idade = idade
+    }
+
+    falar(){
+        console.log(`Olá me chamo ${this.nome} e tenho ${this.idade} anos!`)
+    }
+}
+
+class Programdor extends Pessoa {
+    constructor(nome, sobrenome, idade){
+        super(nome, sobrenome, idade)
+    }
+    
+    profissao(){
+        console.log('Eu sou Dev!')
+    }
+}
+
+const classe = new Programdor('Vitor','Reginaldo',34)
+
+classe.falar()
+classe.profissao()
