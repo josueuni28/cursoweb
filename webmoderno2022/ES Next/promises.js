@@ -16,6 +16,11 @@ falarDepoisDe(3, 'Olá Mundo')
     .then(frase => frase.concat('!!!')) // Usar o .then() para pegar o retorno em caso de sucesso (resolve)
     .then(novafrase => console.log(novafrase)) // Pode encadear vários .then()
     .catch(erro => console.log(erro)) // Usar .cath() para tratar o erro que vem pelo "reject"
+    /*OBS: O .then() também seu tratamento de erro como segundo parâmetro, ex: .then(suaFuncao(), err).
+           E se ele executar o erro dentro de um .then() ele não vai para o .catch(),
+           porém não é muito usual tratar o erro dentro de um .then().
+           É possível também chamar um .then() após um .catch(), mas nesse caso, esse .then() não
+           vai conseguir receber os valores passados anteriormente*/
 
 
 // Exemplo mais robusto
