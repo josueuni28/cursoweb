@@ -1,0 +1,7 @@
+Grupos de Status HTTP:
+
+1XX - Informação
+2XX - Sucesso (Quando a requisição é bem sucedida)
+3XX - Redirecionamento (Como mudança de endereço, endereço antigo para um novo)
+4XX - Erros do Cliente (Por exemplo fazer requisição para uma página que não existe, o famoso 404)
+5XX - Erros do Servidor (Como um servidor fora do ar)
