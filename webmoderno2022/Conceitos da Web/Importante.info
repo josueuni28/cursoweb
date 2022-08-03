@@ -5,3 +5,61 @@ Grupos de Status HTTP:
 3XX - Redirecionamento (Como mudança de endereço, endereço antigo para um novo)
 4XX - Erros do Cliente (Por exemplo fazer requisição para uma página que não existe, o famoso 404)
 5XX - Erros do Servidor (Como um servidor fora do ar)
+
+#############################################################################
+
+Web Packs:
+Conjunto de infra estruturas para um aplicação
+
+O exemplo mais famoso é o LAMP
+L -> Linux (OS)
+A -> Apache (Servidor)
+M -> MySQL (Banco de dados)
+P -> PHP (Linguagem)
+
+// Existem aplicações que já instalam esse Conjunto preparado, como por exemplo o XAMPP, WAMP
+
+#############################################################################
+
+DNS:
+
+Traduz os nomes de domínio em endereço de IP, ex: www.google.com.br aponta para o
+endereço de IP 192.72.225.123
+
+Ele funciona sobre o Protocolo UDP (Menos seguro, porém mais rápido que TCP/IP) e utiliza
+a porta 53
+
+Exemplo de uma requisição básica em um servidor DNS:
+- O usuário informa o endereço no browser
+- O computador envia uma consulta DNS para um servidor local
+- O Servidor responde com o endereço de IP
+- Computador acessa o servidor a apartir do IP obitido
+
+O Servidor DNS possúi dois tipos de buscas, a Recursiva e a Interativa
+Recursiva:  Caso não encontra no seu servidor, se comunica com outros servidores para ver se
+            o endereço está cadastro em um deles. Ao encontrar volta com a resposta do endereço
+            para o computador do cliente.
+Interativa: Caso o servidor perceba que aquele endereço pertence a um outro servidor, Ele
+            passa a referência para esse servidor DNS, por exemplo: Se você estiver nos EUA e
+            quiser acessar um site que termina com .br, ele identifica que o servidor do Brasil
+            poderá atender melhor essa recisão e encaminha por para o Registro.br para tratrar 
+            essa requisição.
+
+Principais tipos de registros DNS:
+A -> IPv4 (Endereço de domínio)
+AAAA -> IPv6 (Endereço de domínio mais atual)
+MX -> Servidor de Email (Informa qual o Servidor de Email, processa suas requisições de email)
+NS -> Servidor DNS (Aponta para outro Servidor DNS)
+CNAME -> Canonical Name (Apelido)
+
+#############################################################################
+
+HTTPS:
+
+HTTP + SSL (v4)
+E o Protocolo que tem Certificados usados com SSL\TLS, torna a comunicação entre Cliente/Servidor
+segura por meio da criptografia dos dados enviados.
+
+Existem várias entidades certificadoras pagas, porém você pode gerar um certificado
+gratuitamente com a Let's Encrypt (https://letsencrypt.org/pt-br/) e fazer sua aplicação rodar
+com o HTTPS.
