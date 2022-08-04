@@ -63,3 +63,14 @@ segura por meio da criptografia dos dados enviados.
 Existem várias entidades certificadoras pagas, porém você pode gerar um certificado
 gratuitamente com a Let's Encrypt (https://letsencrypt.org/pt-br/) e fazer sua aplicação rodar
 com o HTTPS.
+
+#############################################################################
+
+TRANSMISSÃO DE DADOS ONLINE: (SOAP & REST)
+
+Definem como as APIs são criadas
+A diferença entre SOAP e REST, é que SOAP é um protocolo oficial da W3C, e REST não.
+No geral SOAP é mais burocrático, por ser um protocolo ele impõe regras integradas que aumentam sua
+complexidade, geralmente utiliza arquivos XML para enviar e receber resposta.
+REST é mais simples, utiliza o protocolo HTTP, geralmente trabalha com JSON para enviar e receber,
+mas pode usar outros formatos com TXT, HTML e XML...
