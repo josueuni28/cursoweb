@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Pouco de CSS</title>
+    <style>
+        header {
+            background-color: brown;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+        }
+        a {
+            color: darkgoldenrod;
+        }
+        a.impar {
+            color: black;
+        }
+        section {
+            background-color: yellow;
+            margin-bottom: 10px;
+            padding: 3%;
+            font-size: larger;
+        }
+        section#destaque {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Um Pouco de CSS Básico</h1>
+    </header>
+    <nav>
+        <a href="/" class="impar">Navegação 1</a>
+        <a href="/">Navegação 2</a>
+        <a href="/" class="impar">Navegação 3</a>
+        <a href="/">Navegação 4</a>
+        <a href="/" class="impar">Navegação 5</a>
+    </nav>
+    <main>
+        <article>
+            <h2>Olá Mundo</h2>
+            <section id="destaque">Conteudo 1 Conteudo 1 Conteudo 1, Conteudo 1 Conteudo 1, Conteudo 1</section>
+            <section>Conteudo 2 Conteudo 2 Conteudo 2, Conteudo 2 Conteudo 2, Conteudo 2</section>
+        </article>
+    </main>
+    <aside>Lateral</aside>
+    <footer>Rodapé</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios</title>
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav>
+        <a href="/HTML/index.html">INICIO</a>
+        <a href cwm-nav="/HTML/exercicios/teste.html">Teste</a> 
+        <a href cwm-nav="/HTML/exercicios/temp.html">Temp</a>
+    </nav>
+    <section id="conteudo">Clique em um link acima para começar...</section>
+    <footer>
+        Curso Web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('[cwm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function (e) {
+                e.preventDefault()
+                fetch(link.getAttribute('cwm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>
