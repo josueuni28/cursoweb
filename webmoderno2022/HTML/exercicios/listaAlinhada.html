@@ -1,0 +1,58 @@
+<style>
+    .interage {
+        color: brown;
+        cursor: pointer;
+    }
+</style>
+
+<h1>Projeto</h1>
+
+<h4>Clique nas "pastas" para interagir</h4>
+
+<ul class="tree">
+    <li>
+        <strong class="interage">Backend</strong>
+        <ul>
+            <li>
+                <strong class="interage">app</strong>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <strong class="interage">config</strong>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong class="interage">Frontend</strong>
+        <ul>
+            <li>
+                <strong class="interage">public</strong>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="/HTML/css/tree.css">
+
+<script>
+    document.querySelectorAll('.interage').forEach(clica => {
+        clica.onclick = function (e) {
+            const display = clica.nextElementSibling.style.display
+            clica.nextElementSibling.style.display = (display) ? '' : 'none';
+        };
+    });
+</script>
