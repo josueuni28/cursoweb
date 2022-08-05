@@ -5,6 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercícios</title>
+    <style>
+        #conteudo {
+            padding: 25px 0;
+        }
+        nav a {
+            padding: 0 5px;
+            background-color: azure;
+            margin: 0 5px;
+        }
+
+        nav a:hover {
+            background-color: green;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,8 +27,11 @@
     </header>
     <nav>
         <a href="/HTML/index.html">INICIO</a>
-        <a href cwm-nav="/HTML/exercicios/teste.html">Teste</a> 
-        <a href cwm-nav="/HTML/exercicios/temp.html">Temp</a>
+        <a href cwm-nav="/HTML/exercicios/teste.html">00 - Testando</a> 
+        <a href cwm-nav="/HTML/exercicios/texto1.html">01 - Texto</a>
+        <a href cwm-nav="/HTML/exercicios/texto2.html">02 - Texto 2</a>
+        <a href cwm-nav="/HTML/exercicios/listas.html">03 - Listas</a>
+        <a href cwm-nav="/HTML/exercicios/listaAlinhada.html">04 - Lista Alinhada</a>
     </nav>
     <section id="conteudo">Clique em um link acima para começar...</section>
     <footer>
@@ -27,7 +45,11 @@
                 e.preventDefault()
                 fetch(link.getAttribute('cwm-nav'))
                     .then(resp => resp.text())
-                    .then(html => conteudo.innerHTML = html)
+                    .then(html => {
+                        conteudo.innerHTML = html
+                        const script = conteudo.querySelector("script")
+                        eval(script.innerText.toString())
+                    })
             }
         })
     </script>
