@@ -1,0 +1,77 @@
+<h1>Formulário</h1>
+<p>
+    Inicialize o arquivo "<strong>server.js</strong>", para interpretar as requisições
+</p>
+<!-- Tirado o action dos parametros do "form" e colocado diretamento nos "button", para
+     exemplificar duas requisições diferentes com o mesmo form -->
+<form method="post">
+    <input type="hidden" name="id" value="1">
+    <input type="text" name="nome" placeholder="Seu nome...">
+    <input type="password" name="senha" placeholder="Senha...">
+    <textarea name="sobre" cols="30" rows="10" placeholder="Fale sobre você..."></textarea>
+    <div>
+        <strong>Sexo:</strong>
+        <input type="radio" name="sexo" id="masc" value="masc"> <label for="masc">Masculino</label>
+        <input type="radio" name="sexo" id="fem" value="fem"> <label for="fem">Feminino</label>
+        <input type="radio" name="sexo" id="bin" value="bin"> <label for="bin">Binário</label>
+        <input type="radio" name="sexo" id="outs" value="outs"> <label for="outs">Outros</label>
+        <input type="radio" name="sexo" id="none" value="none"> <label for="none">Prefiro não responder</label>
+    </div>
+    <div>
+        <strong>Estado:</strong>
+        <select name="estado" id="estado">
+            <option value="">Selecione seu Estado...</option>
+            <option value="sp">São Paulo</option>
+            <option value="rj">Rio de Janeiro</option>
+            <option value="mg">Minas Gerais</option>
+            <option value="ba">Bahia</option>
+        </select>
+    </div>
+    <div>
+        <strong>Interesses:</strong>
+        <input type="checkbox" name="interesse" value="ai" id="ai"> <label for="ai">AI</label>
+        <input type="checkbox" name="interesse" value="bd" id="bd"> <label for="bd">Big Date</label>
+        <input type="checkbox" name="interesse" value="iot" id="iot"> <label for="iot">IoT</label>
+        <input type="checkbox" name="interesse" value="meta" id="meta"> <label for="meta">Metaverso</label>
+    </div>
+    <div>
+        <strong>Quais tecnologias você domina?</strong>
+        <select name="tecnologias" id="tecs" size="4" multiple>
+            <option value="js">JS</option>
+            <option value="node">Node.js</option>
+            <option value="react">React</option>
+            <option value="ang">Angular</option>
+            <option value="vue">Vue</option>
+            <option value="php">PHP</option>
+            <option value="py">Python</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit" formaction="http://localhost:5500/HTML/usuarios">Enviar</button>
+        <button type="submit" formaction="http://localhost:5500/HTML/usuarios/altera">Alterar</button>
+    </div>
+</form>
+
+<style>
+    input, textarea, select {
+        display: block;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    input, textarea, button, select, label{
+        font-size: larger;
+    }
+    input[type=radio], input[type=checkbox] {
+        display: inline
+    }
+    form div {
+        padding: 3px 5px;
+    }
+    label {
+        cursor: pointer;
+    }
+    form strong {
+        display: block;
+        margin-bottom: 3px;
+    }
+</style>
