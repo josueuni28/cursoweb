@@ -1,0 +1,62 @@
+<h1>Video</h1>
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de video
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: 1px solid #444;
+        margin: 20px 0px;
+    }
+    .progresso > div {
+        background-color: red;
+        color: white;
+        height: 100%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 21px;
+    }
+</style>
+
+<script>
+    const namevid = 'meuVideo'
+    const vid = document.getElementById(namevid)
+    const ply = document.querySelector(`[wm-play="${namevid}"]`)
+    const pse = document.querySelector(`[wm-pause="${namevid}"]`)
+    const pross = document.querySelector(`[wm-progresso="${namevid}"] > div`)
+
+    // Para evitar de fazer o download clicando com o direito do mouse no player
+    vid.oncontextmenu = () => false
+
+    pross.style.width = '0%'
+
+    ply.addEventListener("click", () => {
+        vid.play()
+        let calc = Math.round((vid.currentTime / vid.duration) * 100)
+        pross.style.width = calc+'%'
+        pross.textContent = calc+'%'
+    });
+    pse.addEventListener("click", () => {
+        vid.pause()
+        let calc = Math.round((vid.currentTime / vid.duration) * 100)
+        pross.style.width = calc+'%'
+        pross.textContent = calc+'%'
+    });
+
+    // Também é possível usar o setInterval() para ir atualizando o progrosso automatícamente
+    /* Esse script pode ser colocado dentro de uma função para ficar generico e poder atender
+       outras requisições de players, como por exemplo "configuraVideo('meuVideo')" e todos os
+       eventos ficarem embutidos na função. */
+</script>

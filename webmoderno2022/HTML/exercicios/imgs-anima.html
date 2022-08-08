@@ -1,0 +1,153 @@
+<header>
+    <h1>Animação em slides com JS</h1>
+    <p>Créditos das imagens por <strong>Tarso Bessa</strong> <a href="http://www.cod3r.com.br" target="_blank">cod3r</a></p>
+</header>
+<div class="tela" cwm-slide>
+    <p>
+        <img src="../imgs/imagem1.jpg" alt="Muro da cidade" width="513" height="342" title="Muro da cidade por Tarso Bessa">
+    </p>
+    <p>
+        <img src="../imgs/imagem2.gif" alt="Intro Cod3r" height="342">
+    </p>
+    <p class="circular">
+        <img src="../imgs/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
+    <p class="texto">
+        <img src="../imgs/avatar.jpg" alt="Avatar" height="50" align="left">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt assumenda provident perspiciatis, modi
+        voluptatibus quos tenetur, nobis facilis, nihil eaque aliquam. Quisquam sequi facere unde ratione
+        adipisci, voluptas quo beatae. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
+        quasi voluptas cupiditate maxime quo sunt voluptatum sed architecto error reiciendis,
+        cum eum nulla. Expedita assumenda sapiente libero doloremque nulla corrupti. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Dolores cupiditate dolorum maxime veritatis laboriosam eius
+        possimus rem, ut amet reprehenderit veniam recusandae quod voluptates tenetur dignissimos.
+        Obcaecati reiciendis adipisci impedit.
+    </p>
+    <p class="cidade"></p>
+    <p>
+        <picture>
+            <source media="(min-width: 600px)" srcset="../imgs/logo-larga.png">
+            <img src="../imgs/logo-estreita.png" alt="logo">
+        </picture>
+    </p>
+</div>
+<div>
+    <button id="parar">Parar animação</button>
+    <button id="continua">Continuar animação</button>
+</div>
+<a class="nav" href="../index.html">< Voltar</a>
+
+<style>
+    *{padding: 0px; margin: 0px;}
+    .nav {
+        margin: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
+    header {
+        padding: 10px;
+    }
+    div p {
+        position: absolute;
+        width: 513px;
+    }
+    .circular {
+        width: 513px;
+        background-color: brown;
+    }
+    .texto {
+        width: 600px;
+    }
+    .texto img {
+        margin-right: 10px;
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('../imgs/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+    .tela {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+    button#parar, button#continua {
+        padding: 5px;
+        font-size: larger;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const btn = document.getElementById('parar')
+    const ctn = document.getElementById('continua')
+    
+    const imgs = Array.from(document.querySelectorAll('[cwm-slide] > p'))
+
+    imgs.forEach(img => {
+        img._inicio = window.innerWidth
+        img._fim = -img.clientWidth
+        img._localAtual = img._inicio
+        img._styleDisplay = false
+        img._passo = 2
+        img._posChamaOProximo = window.innerWidth - (img.clientWidth + 10)
+        img._chamaProximo = false
+
+        // console.log('\nNova img:')
+        // console.log(img._inicio)
+        // console.log(img._fim, img.clientWidth, img.scrollWidth)
+        // console.log(img._localAtual)
+        // console.log(img._styleDisplay)
+        // console.log(img._passo)
+        // console.log(img._posChamaOProximo)
+        // console.log(img._chamaProximo)
+
+        img.style.left = img._inicio + 'px'
+        img.style.display = 'none'
+    })
+
+    // Starta
+    imgs[imgs.length-1]._chamaProximo = true
+
+    var anima = setInterval(slides, 10)
+
+    function slides() {
+        for (let i=0; i<imgs.length; i++) {
+            if(imgs[i]._chamaProximo){
+                let prx = (i+1 > imgs.length-1) ? 0 : i+1 
+                //console.log('estou em',i,', e o proximo é',prx)
+                imgs[prx]._styleDisplay = true
+                imgs[prx].style.display = 'block'
+                
+                imgs[i]._chamaProximo = false
+            }
+            
+            if(imgs[i]._styleDisplay){
+                imgs[i]._localAtual -= 1
+                imgs[i].style.left = imgs[i]._localAtual + 'px'
+            }
+            
+            if(imgs[i]._localAtual <= imgs[i]._fim){
+                imgs[i]._styleDisplay = false
+                imgs[i].style.display = 'none'
+                imgs[i]._localAtual = imgs[i]._inicio
+            }
+            
+            if(imgs[i]._localAtual <= imgs[i]._posChamaOProximo){
+                imgs[i]._chamaProximo = true
+                //console.log(i,'esse chamou o proximo... que será',i+1)
+            }
+        }
+    }
+
+    btn.addEventListener("click", function () {
+        clearInterval(anima)
+    });
+    ctn.addEventListener("click", function () {
+        anima = setInterval(slides, 10)
+    });
+</script>

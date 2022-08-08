@@ -1,0 +1,64 @@
+<!-- Como a chamada dessa página é feita via "ajax" na index.html, tive que colocar a referência das
+    imagens (src) como se eu estivesse na página index.html, e não a partir da localização desse arquivo -->
+
+<h1>Imagens</h1>
+<p>Créditos das imagens por <strong>Tarso Bessa</strong> <a href="http://www.cod3r.com.br" target="_blank">cod3r</a></p>
+<p class="larger">Quer ver uma animação legal?! Então <a href="./exercicios/imgs-anima.html">clica aqui!</a></p>
+<div cwm-slide>
+    <p>
+        <img src="./imgs/imagem1.jpg" alt="Muro da cidade" width="513" height="342" title="Muro da cidade por Tarso Bessa">
+    </p>
+    <p>
+        <img src="./imgs/imagem2.gif" alt="Intro Cod3r" height="342">
+    </p>
+    <p class="circular">
+        <img src="./imgs/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
+    <p class="texto">
+        <img src="./imgs/avatar.jpg" alt="Avatar" height="50" align="left">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt assumenda provident perspiciatis, modi
+        voluptatibus quos tenetur, nobis facilis, nihil eaque aliquam. Quisquam sequi facere unde ratione
+        adipisci, voluptas quo beatae. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
+        quasi voluptas cupiditate maxime quo sunt voluptatum sed architecto error reiciendis,
+        cum eum nulla. Expedita assumenda sapiente libero doloremque nulla corrupti. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Dolores cupiditate dolorum maxime veritatis laboriosam eius
+        possimus rem, ut amet reprehenderit veniam recusandae quod voluptates tenetur dignissimos.
+        Obcaecati reiciendis adipisci impedit.
+    </p>
+    <p class="cidade"></p>
+
+    <!-- Alterna entre imagens dependendo das instruções declaradas -->
+    <p>
+        <picture>
+            <source media="(min-width: 600px)" srcset="./imgs/logo-larga.png">
+            <img src="./imgs/logo-estreita.png" alt="logo">
+        </picture>
+    </p>
+</div>
+
+<style>
+    .larger {
+        font-size: larger;
+    }
+    .larger a {
+        font-weight: bold;
+    }
+    .circular {
+        width: 513px;
+        background-color: brown;
+    }
+    .texto {
+        width: 600px;
+    }
+    .texto img {
+        margin-right: 10px;
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('./imgs/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
