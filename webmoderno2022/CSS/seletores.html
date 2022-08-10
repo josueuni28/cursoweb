@@ -6,14 +6,43 @@
     <title>CSS Selectors</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        /*
+
+        *{ } --> Aplica o estilo em tudo
+        div --> Aplica o estilo em todas tags 'div'
+        div, p --> Aplica o estilo em todas tags 'div' e 'p'
+        #meuId --> Aplica o estilo em todo elemento com o id 'meuId'
+        .minhaClass --> Aplica o estilo em todas tags com a classe 'minhaClass'
+        p.teste --> Aplica o estilo apnas nas tags p com a classe 'teste'
+        div > p --> Aplica o estilo nas tags p que são filhos direto de div
+        div p --> Aplica o estilo em todas tags p decendentes de div
+        p + ul --> Aplica o estilo nas tags ul que sejam ao lado de ul
+        p ~ ul --> Aplica o estilo em todas tags ul que tenham p como irmão
+        [feira] --> Aplica o estilo em todas tags com o atributo 'feira'
+        [feira=casa] --> Aplica o estilo em todas tags com o atributo 'feira' com o valor 'casa'
+        [feira~=empresa] --> Aplica o estilo em todas tags com o atributo 'feira' que contenha 'empresa'
+                             (Só reconhece se o valor estiver separado por espaços)
+        [feira*=sa] --> Aplica o estilo em todas tags com o atributo 'feira' que tenha a string 'sa'
+        span:nth-child(1) --> Aplica o estilo em todos span que seja o filho número de alguém
+        section > :nth-child(odd) --> Aplica o estilo em todos os filhos ímpares de section
+        section > :nth-child(even) --> Aplica o estilo em todos os filhos pares de section
+        section > :nth-child(1) --> Aplica o estilo no primeiro elemento de section
+        section > span:nth-of-type(2) --> Aplica o estilo no segundo elemento do tipo span dentro de section
+
+        */
+        section > span:nth-of-type(2)
+        div p {
+            background-color: brown;
+            color: yellow;
+        }
     </style>
 </head>
 
 <body>
     <div class='tag'>
         <div class='tag'>
-            <p class='tag'>1</p>
+            <p class='tag'><strong>IMPORTANTE</strong>: Veja o comentário nos style para entender...</p>
+            <p class='tag teste'>2</p>
             <ul class='tag' feira='casa'>
                 <li>Arroz</li>
                 <li>Feijão</li>

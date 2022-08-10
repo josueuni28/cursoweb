@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
     <title>Herança</title>
     <style>
-        /* ... */
+        /* Sobre Herança de estilos em elementos */
+        body {
+            /* font-family, font-size, entre outos são passado por padrão como herança */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 40px;
+            /* border e padding, por padrão, não são passados como herança */
+            border: solid red 4px;
+            padding: 20px;
+        }
+
+        div {
+            /* Você dizer se quer que o estilo seja herdado do pai com o 'inherit' */
+            border: inherit;
+            padding: inherit;
+        }
     </style>
 </head>
 

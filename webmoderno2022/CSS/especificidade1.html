@@ -6,6 +6,33 @@
     <title>Especificidade CSS</title>
     <style>
         /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+
+        /*
+            Em termos gerais a ordem de mais importante é assim:
+
+            1. Regra com !important (Não recomendado, evitar, a não ser em casos muitos extremos)
+            2. Seletores mais específicos
+            3. Última regra processada (Em caso de empate)
+
+        */
+
+        /* Exemplo de mais importante (Do menos ao mais importante) */
+
+        p {
+            background-color: aqua;
+        }
+
+        .observacao {
+            background-color: blueviolet;
+            padding: 200px !important; /* Usando o !important para burlar a regra */
+            font-size: 10px;
+        }
+
+        p.observacao {
+            background-color: chartreuse;
+            padding: 5px;
+            font-size: 50px;
+        }
     </style>
 </head>
 

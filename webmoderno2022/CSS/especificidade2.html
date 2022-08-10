@@ -6,12 +6,56 @@
     <title>Especificidade CSS</title>
     <style>
         /* https://specificity.keegan.st/ */
+
+        /*
+            Continuação sobre especificidade:
+
+            (Do mais importante ou menos)
+            1. Inline
+            2. ID
+            3. Classe, Pseudo-classe, atributo
+            4. Elemento, Pseudo-elemento
+
+            (Em caso de empate, a última declaração ganhar)
+        */
+
+        body {
+            background-color: blue;
+            color: white;
+            font-size: 40px;
+        }
+
+        /* Nas 4 regras abaixo todos tem o mesmo nível de importancia (O que vai ser aplicado
+            vai depender da ordem ) */
+        div {
+            background-color: chocolate;
+        }
+        div[wm-cor] {
+            background-color: blueviolet;
+        }
+        div.estilo {
+            font-weight: bold;
+            color: chartreuse;
+        }
+        div:hover { /* O :hover não funcionará se você trocar a ordem */
+            background-color: black;
+        }
+
+        #unico1, #unico2 {
+            background-color: white;
+            color: black;
+        }
+        #unico1:hover, #unico2:hover {
+            color: yellow;
+            font-style: italic;
+        }
+
     </style>
 </head>
 
 <body>
-    <div id="unico1" class="estilo">
-        #unico1 vs .estilo vs inline
+    <div id="unico1" class="estilo" style="background-color: red;">
+        #unico1 vs .estilo vs inline (Veja o comentário no style da página)
     </div>
     <div id="unico2" class="estilo">#unico2 vs .estilo</div>
     <div class="estilo" wm-cor>.estilo vs wm-cor</div>
