@@ -7,31 +7,45 @@
     <style>
         body {
             background-color: #222;
+            margin: 0;
         }
 
+        /* EVITAR O USO DE Float e Clear (Hoje já existem módulos CSS que resolvem esses problemas
+           de forma mais natural e simples, como o flex e grid */
         .c1 {
             background-color: red;
+            float: right;
         }
 
         .c2 {
             background-color: green;
+            clear: right; /* Faz com que o esse elemento não invada o float 'right' do elemento .c1 */
+            float: left;
         }
         
         .c3 {
             background-color: blue;
+            clear: both; /* clear 'both' faz respeitar (Não invade) a flutuação da direita e esquerda */
         }
 
         .c4 {
             background-color: orange;
         }
+
+        div {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 12em;
+        }
     </style>
 </head>
 
 <body>
-    <div class="c1"></div>
-    <div class="c2"></div>
-    <div class="c3"></div>
-    <div class="c4"></div>
+    <div class="c1">IMPORTANTE</div>
+    <div class="c2">Veja o</div>
+    <div class="c3">Código</div>
+    <div class="c4">Fonte</div>
 </body>
 
 </html>

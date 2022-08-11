@@ -11,11 +11,41 @@
             https://coolors.co/
             http://paletton.com/
         */
+
+        body {
+            background-color: brown; /* Colocando diretamente o nome da cor */
+
+            /* Valore em hexadecimal (Cada parte vai de 00 até ff)
+               # 52 ef 8d --> A primeira parte é Red, a segundo Green e a terceira o Blue*/
+            background-color: #52ef8d; 
+            /* É possível abreviar, nesse caso cada valor representa uma parte.
+               No exemplo abaixo, significa #55eedd */
+            background-color: #5ed;
+            /* Também é possível aplicar transparência na quarta parte.
+               00 significa total transparência e ff nenhuma transparência */
+            background-color: #52ef8d89;
+            /* Da mesma forma é possível abriviar com a transparência */
+            background-color: #5ed8;
+
+            /* Com a Função rgb() --> Red, Green, Blue
+               Os valores vão de 0 até 255 */
+            background-color: rgb(100, 205, 89);
+            /* Para adicionar transparência usar a função rgba(), a transparência vai de 0.0 até 1.0 */
+            background-color: rgba(100, 205, 89, 0.5);
+
+            /* Com o padrão HSL, usando a funçao hsl() --> Hue, Saturation, Lightness
+               Hue vai de 0 até 359.
+               Saturation vai de 0% a 100%.
+               Lightness vai de 0% a 100%. */
+            background-color: hsl(298, 100%, 50%);
+            /* Você também pode aplicar transparência usando a hsla() */
+            background-color: hsla(298, 100%, 50%, 20%);
+        }
     </style>
 </head>
 
 <body>
-
+    <strong>Veja os comentários do style no código fonte da página :)</strong>
 </body>
 
 </html>

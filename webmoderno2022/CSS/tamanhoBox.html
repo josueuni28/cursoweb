@@ -4,14 +4,53 @@
     <meta charset="UTF-8">
     <title>Tamanho Box</title>
     <style>
+        /*
+        Você pode mudar a forma de calcular de modo geral, adicionando a propriedade como universal no seu
+        documento...
+        * {
+            box-sizing: border-box;
+        }
+        */
+
         body {
             font-size: 45px;
         }
+
+        div {
+            background-color: deepskyblue;
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+
+            /* Por padrão o Box Sizing (Tamanho do Box) e calculo apenas o conteúdo, ele não leva
+               em considerão o padding ou border, e isso pode gerar efeitos não desejáveis.
+               Para alterar esse comportamento você pode adicionar a propriedade abaixo, com isso
+               o calculo passa a levar em consideração todo o Box com o padding e border. */
+            box-sizing: border-box;
+        }
+
+
+        /* Ignore isso abaixo.... :) */
+        .meme {
+            border: 1px solid;
+            padding: 5px;
+            height: initial;
+            width: initial;
+            font-size: 22px;
+            display: inline-block;
+            background-color: #1aaadb;
+            color: aliceblue;
+            font-style: italic;
+            border-radius: 10px;
+        }
+
     </style>
 </head>
 <body>
     <div>
         O tamanho do Box é...
+        <div class="meme">Veja os comentários do Código-fonte :)</div>
     </div>
 </body>
 </html>

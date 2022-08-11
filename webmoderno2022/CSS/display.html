@@ -5,7 +5,44 @@
     <meta charset="UTF-8">
     <title>Display</title>
     <style>
-        /* ... */
+
+        ul { padding: 0;}
+        div { background-color: seagreen; }
+        span { background-color: dodgerblue; }
+        li { background-color: purple; }
+
+        div, span, li {
+            width: 50%;
+            width: 200px;
+            height: 80px;
+            /* Esses atributos acima não fazem efeito no span, porque por padrão o span tem
+               um display 'inline'. Já a div e li tem por padrão o display 'block'.
+               O display 'inline' não considera o width e height */
+
+            padding-top: 30px;
+            text-align: center;
+
+            /* Se setar todos para display 'inline', todos terão o compartamento do span,
+               vão ficar na mesma linha e não considerar o width e height.
+               Obs: o li's vão pular uma linha (ficando juntos) porque o ul é por padrão 'block' */
+            display: inline;
+
+            /* Se setar display 'block' o span passa a considerar o width e height, e ficar em
+               um linha diferente (Efeito do estilo 'block') */
+            display: block;
+
+            /* Se colocar display 'inline-block' todos vão ficar na mesma linha, porém
+               vão respeitar o width e height*/
+            display: inline-block;
+
+        }
+
+        /* Veja o comentário no HTML */
+        nav{
+            display: inline-block;
+            width: 98px;
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -14,10 +51,21 @@
     <span>Texto 2</span>
     <span>Texto 3</span>
     <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <li>Veja o</li>
+        <li>Código-fonte</li>
+        <li>Para entender...</li>
     </ul>
+    <div>
+        <nav>
+            Cuidado com
+        </nav><!-- Quando tem quebra de linha fica um caractere em branco no meio
+              (que gera um pequeno espaço em branco), e isso pode atrapalhar quando for configurar
+              as dimensões dos elementos. Você pode resolvir isso tirando as quebras de linha entre
+              um elemento e o outro, ou colocando ao invés de 'width' o 'min-width' nos elementos  -->
+        <nav>
+            o 'inline-block'
+        </nav>
+    </div>
 </body>
 
 </html>

@@ -5,9 +5,15 @@
     <meta charset="UTF-8">
     <title>Altura e Largura</title>
     <style>
+        html {
+            height: 100%; /* Setando o html para ocupar 100% da altura da tela */
+        }
         body {
             font-size: 40px;
             background-color: coral;
+            margin: 0;
+
+            height: 100%; /* Alterando o body para ocupar 100% do "elemnto parent" (nesse caso a tag html) */
         }
 
         div {
@@ -17,12 +23,23 @@
         span {
             background-color: dodgerblue;
         }
+
+        div, span {
+            /* De modo geral, os valores percentoais levam em consideração o "elemento parent",
+               por padrão as tag html e body possuem display 'block'.
+               Então se você colocar um height em porcetagem sem modificar o html e body,
+               não vai surtir efeito nenhum. */
+            width: 50%;
+            height: 250px;
+            height: 50%;
+            display: block;
+        }
     </style>
 </head>
 
 <body>
     <div>Título</div>
-    <span>Subtítulo</span>
+    <span>Veja o Código-fonte para entender :)</span>
 </body>
 
 </html>
