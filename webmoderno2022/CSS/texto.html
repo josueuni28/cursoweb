@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Texto</title>
+    <!-- Importando uma fonte do Google -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <style>
-        /* ... */
         * {
             margin: 0;
         }
@@ -16,14 +16,64 @@
             flex-direction: column;
             align-items: center;
         }
+
+        p {
+            /* Valores padrões e medidas de fonte */
+            font-size: 1em; /* Relativo e Recomendado para uso em fontes */
+            font-size: 100%; /* Relativo */
+            font-size: 16px; /* Absoluto (16px é o tamanho de fonte padrão do browser) */
+            font-size: 12pt; /* Absoluto (É o mesmo que 16px) - pt é uma medida de pontos */
+
+            /* Mais de Unidade Relativas */
+            font-size: 50vh; /* Não usual */
+            font-size: 10vw; /* Não usual */
+            font-size: 5.2rem;
+
+            /* Tipos de Fontes e Famílias */
+            font-family: monospace; /* familia padrão */
+            font-family: Georgia, serif; /* Família 'serif' são fonte com estilo de letras puxados */
+            font-family: Verdana, sans-serif; /* Família 'sans-serif' são fonte com estilo de letras retos */ 
+            font-family: 'Indie Flower', cursive; /* Família 'cursive' são fonte com estilo de letras a punho */
+            /* Esse fonte 'Indie Flower' foi a fonte importada no head */
+
+            /* Fazendo 'transformações' na fonte */
+            font-weight: 100;
+            font-style: italic;
+            text-transform: uppercase;
+            /* text-decoration: overline underline line-through; */
+            word-spacing: 10px; /* Espaçamento das palavras */
+            letter-spacing: 50px; /* Espaçamento das letras */
+            line-height: 2.2em; /* Altura da linha */
+            text-align: center;
+        }
+
+        .botao {
+            font-size: 5rem;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+        }
+
+        .destaque {
+            color: white;
+            background-color: tomato;
+            box-shadow: inset -2px -2px 1px 1px black;
+        }
+        .destaque:hover {
+            box-shadow: inset -1px -1px 1px 1px hsl(9, 50%, 40%);
+        }
+        .destaque:active {
+            box-shadow: inset 1px 1px 2px 2px hsl(9, 50%, 40%);
+        }
+
     </style>
 </head>
 
 <body>
     <div>
         <p>
-            Que texto
-            <br>legal!!!
+            Veja o Código
+            <br>Fonte!!!
         </p>
     </div>
     <a href="http://google.com" class="botao destaque">Google</a>

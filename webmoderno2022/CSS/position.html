@@ -5,7 +5,67 @@
     <meta charset="UTF-8">
     <title>Position</title>
     <style>
-        /* ... */
+        div{
+            color: white;
+            font-size: 3em;
+            padding: 30px;
+            border: solid 5px black;
+        }
+
+        /* Não foi colocado position 'static' na class .static porque o position 'static' é o valor padrão */
+        .static {
+            top: 100px; /* Não causa efeito */
+            left: 100px; /* Não causa efeito */
+            background-color: steelblue;
+        }
+        .fixed {
+            /* Fica fixo na tela, mesmo com a rolagem */
+            position: fixed;
+            bottom: 30px;
+            right: 0;
+            background-color: tomato;
+        }
+        .relative1 {
+            /* Leva em consideração o elemento anterior */
+            position: relative;
+            left: 50px;
+            top: 10px;
+            background-color: seagreen;
+        }
+        .absolute1 {
+            /* Sem um pai 'ralative', ele se baseia apenas na tela */
+            position: absolute;
+            left: 350px;
+            top: 120px;
+            background-color: violet;
+        }
+
+        .relative2 {
+            /* Para testar com o .absolute2 */
+            position: relative;
+            left: 250px;
+            top: 2000px;
+            width: 200px;
+            height: 200px;
+            background-color: slategrey;
+        }
+        .absolute2 {
+            /* Nesse caso (Com um pai 'relative') ele vai se posicionar baseando no .relative2 */
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+        }
+
+        .sticky{
+            /* Ele se comporta como static, porém ao rolar a página ele acompanha */
+            position: -webkit-sticky; /* Para funcionar no browser Safari */
+            position: sticky;
+            background-color: #777;
+            top: 10px;
+        }
     </style>
 </head>
 
@@ -20,7 +80,7 @@
     </div>
 
     <div class="sticky">Sticky</div>
-    <p style="padding-bottom: 2000px;">Opa</p>
+    <p style="padding-bottom: 1000px;">Opa</p>
 </body>
 
 </html>

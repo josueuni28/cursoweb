@@ -5,13 +5,51 @@
     <meta charset="UTF-8">
     <title>Unidades #01</title>
     <style>
-        /* ... */
+        /*
+        UNIDADES DE MEDIDAS
+
+        px, cm, mm -> Unidades absolutas
+
+        vw -> Porcentagem da largura da tela
+        vh -> Porcentagem da altura da tela
+        vmin -> Se baseia no tamanho menor da tela (Pode ser altura ou largura)
+        vmax -> Se baseia no tamanho maior da tela (Pode ser altura ou largura)
+
+        em -> Se baseia em um tamanho absoluto da referência mais próxima. Ex: 2em significa
+              2x o tamanho da medida estabelecida do elemento/referência mais próxima.
+        rem -> Se baseia no tamnho absoluto do elemento raiz html (Acima de todos)
+
+        % -> Um caso especial, varia de acordo com o position dos elementos (Veja "unidades2.html")
+        */
+        .unidades-absolutas {
+            position: absolute;
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px purple;
+            margin: 30px;
+            width: 4cm; /* UNIDADE POUCO USADA */
+            height: 20mm; /* UNIDADE POUCO USADA */
+            top: 150px;
+            left: 200px;
+        }
+
+        .unidades-relativas {
+            position: absolute;
+            font-size: 4em; /* UNIDADE RECOMENDADA PARA FONTES */
+            padding: 5%;
+            border: solid 1vw #222;
+            margin: 0.8%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%;
+            right: 5%;
+        }
     </style>
 </head>
 
 <body>
-    <div class="unidades-absolutas">Opa!</div>
-    <div class="unidades-relativas">Epa!</div>
+    <div class="unidades-absolutas">Source</div>
+    <div class="unidades-relativas">Code</div>
 </body>
 
 </html>

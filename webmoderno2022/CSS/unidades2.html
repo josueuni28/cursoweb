@@ -2,9 +2,44 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Unidades #02</title>
+    <title>Unidades #02 - % (Porcentagem)</title>
     <style>
-        /* ... */
+        /* UNIDADE DE MEDIDA % (Porcentagem) */
+
+        .fora {
+            /* position: static; */
+            /* 'static' é o valor padrão, quando não é informado um position */
+            position: relative;
+            /* Com position 'relative' o 100% da tag .dentro vai se basear no 'conteudo'
+               da tag pai (Nesse caso a tag .fora) com os position: static, relative e absolute
+               porém com algumas alterações. Já o positon 'fixed', vai ignorar o 'conteudo' do pai
+               e vai se basear no tamanho da tela. (veja mais nos comentários abaixo)*/
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%;
+            position: static;
+            /* (pai 'relative') Se baseia no conteúdo (É o valor padrão) */
+            /* (pai 'static') Se baseia no conteúdo... */
+
+            position: relative;
+            /* (pai 'relative')  Se baseia no conteúdo */
+            /* (pai 'static') Se baseia no conteúdo */
+
+            position: absolute;
+            /* (pai 'relative')  Se baseia no conteúdo + o padding */
+            /* (pai 'static') Se baseia na tela */
+
+            position: fixed;
+            /* (pai 'relative')  Se baseia na tela (ignora o position 'relative' do pai) */
+            /* (pai 'static') Se baseia na tela */
+        }
     </style>
 </head>
 <body>
