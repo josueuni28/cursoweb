@@ -12,6 +12,22 @@
             border: solid 5px;
             display: none;
         }
+
+        @media (max-width: 600px) {
+            .muito-pequeno { display: block; }
+        }
+
+        /* A vírgula separando as regras funcionando como ou */
+        @media (max-width: 1000px), (orientation: portrait) {
+            /* Se uma das regras forem atendidas vai aplicar o estilo abaixo */
+            .pequeno-retrato { display: block; }
+        }
+
+        /* Ao contrário da vírgula com o 'and' todas as regras precisam ser atendidas */
+        @media (min-width: 500px) and (max-width: 1000px) {
+            /* Se as duas regras forem atendidas o estilo será aplicado */
+            .intervalo { display: block; }
+        }
     </style>
 </head>
 <body>
