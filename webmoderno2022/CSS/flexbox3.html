@@ -6,7 +6,35 @@
     <title>Flexbox #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row; /* O 'row' já é padrão, colocado apenas pela didática */
+            width: 50%;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+
+            /* O flex-basis é a propriedade oficial para definiu o comprimento dos itens dentro do Flex */
+            /* Ele vai aplicar o tamanho em relação ao flex-direction definido, nesse caso, o 
+               flex-basis vai aplicar o tamanho de 100px a largura dos itens, porém se a direção fosse
+               coluwn seria aplicado a altura */
+            flex-basis: 100px;
+            width: 200px;
+            /* Mesmo definindo um width depois (para a largura), se já tiver definido o flex-basis,
+               o width não será aplicado e sim o flex-basis por ser específico para o Flex */
+        }
+
+        .flex-container div:nth-child(4) {
+            /* O atributo flex, é um short-cut/atalho para definir três propriedades em um só.
+               Com o atributo flex você define o: 'grow', 'shrink' e 'basis' */
+               flex: 5 6 300px;
+        }
     </style>
 </head>
 

@@ -51,9 +51,40 @@
             background: #f50a31;
             color: #fff;
         }
+
+        main {
+            padding: 20px;
+        }
+
         /* ==================== */
         /* Solução com Flex Box */
         /* ==================== */
+
+        .cabecalho {
+            display: flex;
+            width: 100%;
+            align-items: center;
+        }
+
+        .menu ul{
+            display: flex;
+            width: 340px;
+        }
+        .menu li {
+            flex-basis: 100%;
+            text-align: center;
+        }
+
+        .autenticacao {
+            text-align: right;
+            flex-grow: 7;
+        }
+
+        @media (max-width: 840px) {
+            .autenticacao {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -85,6 +116,10 @@
             <a href="#registar" class="botao destaque">Registrar</a>
         </aside>
     </header>
+    <main>
+        <h1>Solução para o desafio do Menu utilizando Flex-Box</h1>
+        <strong>Também foi aplicado a Media Query</strong>
+    </main>
 </body>
 
 </html>

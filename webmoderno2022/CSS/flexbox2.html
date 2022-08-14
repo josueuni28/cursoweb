@@ -6,12 +6,82 @@
     <title>Flexbox #02</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex;
+            /* Definindo Altura e Largura do Flex*/
+            height: 300px;
+            width: 600px;
+        }
+
+        /* Aplicando Propriedades Individuais */
+        .flex-container div:nth-child(3){
+            /* Você pode definir configurações individuais para os flex-itens (Conteúdo dentro do Flex)*/
+            background-color: brown;
+
+            /* Por padrão todos os flex-itens tem o mesmo "peso" de ordem (0), porém você pode aplicar
+               peso diferente para um item específico, e com isso modificar a ordem de exibição */
+               order: 1; /* Os itens com peso mais alto ficam por último */
+               order: -1;  /* Os itens com peso mais baixo ficam em primeiro */
+
+            /* Modando o alinhamento do iem */
+            align-self: center;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+            width: 100px;
+
+            /* Com o flex-grow você configura o preenchimento do espaço em branco de um Flex
+               pelos flex-itens (Nesse caso o Flex tem 600px e todos os itens dão 400px de largura) */
+            flex-grow: 1;
+            /* Flex-grow também funciona como peso, nesse caso como foi definido o peso
+               de 1 para todos os itens, todos vão ocupar o espaço em branco/restante de forma omogênia */
+            /* Se você aplicar o valor 0 (Zero) para um item ele não vai modificar seu tamanho, apenas os
+               outros itens vão se adequar (Nesse caso) a largura do Flex */
+        }
+
+        /* Aplicando o flex-grow com peso 3 em um item */
+        .flex-container div:nth-child(1){
+            background-color: cadetblue;
+
+            /* Quanto maior for o peso do flex-grow aplicado em um item, mas tamanho ele terá sobre
+               os outros itens */
+            flex-grow: 5;
+        }
+
+        /* Flex-Shrink */
+        .flex-container2 div:nth-child(2){
+            background-color: yellow;
+
+            /* O flex-shrink funciona ao inverso do flex-grow */
+            /* No exemplo com o flex-container2, o Flex tem 300px de largura e os quatro itens possuem
+               100px de largura, com isso a largura dos itens fica maior que do Flex */
+            /* Ao usar flex-shrink em um caso como esse, o item ao invés de ocupar mais espaço, vai
+               encolher mais. Quanto maior o "peso" atribuido com flex-shrink em um item, mais ele
+               "perde" espaço perante os outros itens */
+            flex-shrink: 5;
+        }
+
+
+
+        .flex-container2 { display: flex; height: 300px; width: 300px; }
+        .flex-container2 div { box-sizing: border-box; width: 100px; }
     </style>
 </head>
 
 <body>
     <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <div class="flex-container2 tag nolabel">
         <div class="tag nolabel">1</div>
         <div class="tag nolabel">2</div>
         <div class="tag nolabel">3</div>

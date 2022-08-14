@@ -6,22 +6,65 @@
     <title>Flexbox #01</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        .flex-container {
+            /* Definindo que o elemento vai ter a propriedade flex */
+            display: flex;
+
+            /* O Flex tem uma direção e por padrão a direção do flex é row (linha) */
+            flex-direction: column; /* Mudando para coluna */
+            flex-direction: column-reverse; /* É possível mudar a ordem (do último para o primeiro) */
+
+            width: 50%; /* Definindo uma largura para o flex */
+
+            /* Por padrrão se os elementos dentro do flex passarem o tamanho, eles continuam sem
+               quebrar a linha */
+            flex-wrap: wrap; /* A propriedade 'wrap' faz os elementos sobrando irem para a próxima linha */
+            /* O flex-wrap tambéem tem a propriedade 'wrap-reverse', faz o conteeúdo da linha
+               quebra ficar invertido */
+
+            /* A propriedade 'flex-flow' é a junção do flex-direction com o flex-wrap */
+            flex-flow: row-reverse wrap; /* Definindo a direção e quebra de linha mais resumida */
+
+            height: 400px; /* Definindo uma altura para o flex */
+
+            /* Com o justify-content, você tem várias formas de agrupar os elementos (na direção 
+               definida) dentro do flex */
+            justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-between;
+
+            /* Cross-Axis (A direção oposta do flex-direction definida) */
+            /* Se você definiu a direção para linha o Cross-Axis são as colunas */
+            align-items: center; /* Como no justify-content, existem várias formas de alinhamento dos itens */
+
+            /* APENAS PARA Flex COM MAIS DE UMA LINHA (wrap) */
+            /* Com o align-content, você pode ajustar a disposição do alinhamento da(s) linha(s) do Flex */
+            align-content: flex-start;
+        }
+
+        .big {
+            font-size: 1.5em;
+        }
     </style>
 </head>
 
 <body>
     <div class="flex-container tag nolabel">
-        <div class="tag nolabel">1</div>
-        <div class="tag nolabel">2</div>
-        <div class="tag nolabel big">3</div>
-        <div class="tag nolabel">4</div>
-        <div class="tag nolabel">5</div>
-        <div class="tag nolabel">6</div>
-        <div class="tag nolabel">7</div>
-        <div class="tag nolabel">8</div>
-        <div class="tag nolabel">9</div>
-        <div class="tag nolabel">10</div>
+        <div class="tag nolabel">Ve</div>
+        <div class="tag nolabel">ja</div>
+        <div class="tag nolabel big">o</div>
+        <div class="tag nolabel">Có</div>
+        <div class="tag nolabel">di</div>
+        <div class="tag nolabel">go</div>
+        <div class="tag nolabel">Fon</div>
+        <div class="tag nolabel">Te</div>
+        <div class="tag nolabel">Da</div>
+        <div class="tag nolabel">Pá</div>
+        <div class="tag nolabel">gi</div>
+        <div class="tag nolabel">na</div>
+        <div class="tag nolabel">!</div>
+        <div class="tag nolabel">:)</div>
     </div>
     <script src="js/tag.js"></script>
 </body>
