@@ -22,6 +22,79 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        body {
+            /* Ativando o 'grid' no body */
+            display: grid;
+
+            /* Criando um grid com duas colunas de 50% */
+            grid-template-columns: 50% 50%;
+
+            /* Você pode usar a função 'repeat' para agilizar a criação.
+               Nesse caso irá criar 12 colunas com 8.33% */
+            grid-template-columns: repeat(12, 8.33%);
+            /* É possível continuar colocando mais colunas ou linhas depois da função 'repeat' Ex: repeat(5, 100px) 250px */
+
+            /* Você também pode usar a unidade de medida 'fr' (Fração).
+               A 'fr' como o nome diz fraciona o conteúdo, nesse caso 1fr, vai corresponde ao restante do documento, a sobra */
+            grid-template-columns: 100px 20% 1fr;
+
+            grid-template-columns: 3fr 6fr 3fr; /* Você pode trabalhar exclusivamente com a unidade 'fr' */
+
+            /* Existem a função minmax(), que define um limite para o tamanho da coluna, entre o min e o max
+               Ex: minmax(100px, 300px) a coluna vai ter no minimo 100px e no maximo 300px */
+
+            /* Com o Grid da mesma forma que você define as colunas você pode definir as linhas */
+            grid-template-rows: 50% 25% 12.5% 12.5%;
+
+            grid-template-rows: 100px 1fr; /* Você pode usar as mesmas unidades e função do columns */
+            /* Nesse caso as outras duas partes de baixo como não foram definidas, vão ocupar o minimo de espaço
+               apenas para mostrar o conteúdo interno */
+
+            /* com a propriedade 'auto', diferente do 'fr', o restante se divide de forma omogênea */
+            grid-template-rows: 100px auto;
+            /* IMPORTANTE: Porém se você forma manipular posteriormente as linhas sepadaro, e recomendado definir o valor para 
+               todas as linhas nesse caso ficaria: 100px auto auto auto */
+            
+            grid-template-rows: 100px auto auto auto;
+        }
+
+        /* Manipulando as 'celulas' individuas */
+        .d8 {
+            /* Nesse caso o elemento div '.d8' vai começar na segunda coluna e terminar na 4 (Última coluna) */
+            grid-column-start: 2;
+            grid-column-end: 4;
+
+            /* Você pode usar o atributo 'span' que significa, o local atual, nesse caso a linha atual, e
+               o 2 significa que ele vai andar duas casas. Gera o mesmo efeito da configuração acima com o start e end */
+            grid-column-end: span 2;
+
+            /* Da mesma maneira que você pode definir onde as linhas começam e terminam, você pode fazer na direção das colunas */
+            grid-row-start: 3;
+            grid-row-end: 5;
+            /* Nesse caso esta dizendo para o elemento começar na linha 3(A linha atual) e ir até a linha 5 (A penúltima) */
+
+            grid-row-end: span 2; /* Você também pode definir o percurso utilizando o 'span' */
+        }
+
+        .d10, .d11 {
+            /* Cuidado: Os elementos podem se sobrepor dependo da configuração que você faça */
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: span 1;
+            /* Nesse caso como foi definido para os dois elemento iniciar no mesmo ponto e terminar no mesmo ponto
+               tanto com as colunas e linhas, eles acabam se sobrepondo. */
+            /* Se você causou esse efeito propositalmente, você pode controlar quem sera exibido primeiro com a
+               propriedade 'z-index' (Veja abaixo) */
+        }
+
+        .d10 {
+            /* O z-index funciona como peso, quanto maior o z-index de um elemento perante o outro ele passa a frente.
+               Por padrão todos elementos tem z-index 0 */
+            z-index: 5;
+            /* Com o z-index definido maior para o elemento .d10, ele será exibido na frente do .d11 que está sobreposto */
+        }
     </style>
 </head>
 

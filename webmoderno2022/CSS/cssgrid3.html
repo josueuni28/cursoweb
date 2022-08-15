@@ -6,14 +6,71 @@
     <title>CSS Grid #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        *{ margin: 0; padding: 0; }
+
+        /* Você pode usar o 'grid-area', junto com o 'grid-template-areas' para agrupar os elementos de
+           forma mais simples e intuitiva */
+
+        main {
+            /* Definindo a 'label' para cada elemento */
+            grid-area: conteudo;
+        }
+        header {
+            grid-area: cabecalho;
+        }
+        nav {
+            grid-area: navegacao;
+        }
+        footer {
+            grid-area: rodape;
+        }
+
+        body {
+            display: grid;
+
+            min-height: 100vh;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 200px 1fr 100px;
+
+            /* Colocando o 'grid-template-areas' você pode usar os nomes definidos dos elementos
+               dizendo que elemento vai ocupar qual parte */
+
+            /* IMPORTANTE: Certifique de colocar o nome correto dado para os elementos e a disposição
+               de cada elemento no grid, se não vai gerar resultados inesperados */
+
+            /* Como esse template tem duas colunas e necessário informar o nome do elemento
+               para cada coluna.
+               Se ficar espaços sem nomear, ou nomes escritos de maneira errada o template quebra */
+            grid-template-areas: 
+                'cabecalho cabecalho'
+                'navegacao conteudo'
+                'rodape rodape';
+        }
+
+        /* Veja como é mais simples manipular a disposição dos itens usando o Media Query */
+        /* Um exemplo para dispositivos móveis */
+        @media (max-width: 700px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 100px 1fr 100px;
+
+                grid-template-areas: 
+                    'navegacao'
+                    'conteudo'
+                    'rodape';
+            }
+
+            header {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <main class="tag">CONTEÚDO</main>
+    <main class="tag"><strong>Veja os comentários do CSS no Código fonte para entender... :)</strong></main>
     <header class="tag">CABEÇALHO</header>
-    <footer class="tag">RODAPÉ</footer>
+    <footer class="tag">O Layout é responsivo!</footer>
     <nav class="tag">NAVEGAÇÃO</nav>
 
     <script src="js/tag.js"></script>
