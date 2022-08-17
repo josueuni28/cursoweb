@@ -17,7 +17,46 @@
         </ul>
     </div>
     <script>
-        // ...
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        /* Acessando um elemento pelo atributo, nesse caso apenas para fim didático, o correto,
+        como o elemento tem um 'id', seria pelo id */
+
+        console.log('Elemento "ul":.......')
+
+        console.log(lista.destino)
+        /*Não vai pegar o valor do atributo 'destino' pela notação ponto
+          porque 'destino' não é um atributo padrão reconhecido da tag */
+        
+        console.log('getAttribute:',lista.getAttribute('destino')) // Acessando pelo 'getAttribute'
+        console.log('hasAttribute:',lista.hasAttribute('destino')) // Verificando se o atributo existe
+
+        lista.setAttribute('destino','cozinha') // Alterando o valor do atributo
+        lista.setAttribute('status','aberto') // O 'setAttribute' também serve para criar um atributo que não tenha
+        lista.removeAttribute('destino') // Removendo um atributo
+
+        console.log('dataset', lista.dataset)
+        // Com o '.dataset' você pode pegar os atributos que começam com o prefixo 'data-'
+
+        // O DOM trata diferente os atributos que começam com o prefixo 'data-' (Por ser a forma especificada na documentação)
+        console.log('data-urgencia:', lista.dataset.urgencia)
+        // Acessando o atributo diretamente... (Não precisa colocar o prefixo 'data-')
+
+        lista.dataset.urgencia = 1 // Alterando o atributo pelo 'dataset'
+
+        // Porém você pode acessar o mesmo atributo com o 'getAttribute'
+        console.log('getAttribute (data-urgencia):',lista.getAttribute('data-urgencia'))
+        // Nesse caso você precisa passar o nome completo, com o prefixo
+
+
+        /* CUIDADO: (Uma Observação Importante) */
+
+        const label = document.querySelector('label')
+        console.log(label.for)
+        /* Por mais que o atributo 'for' é um elemento padrão da tag 'label', você não pode acessá-lo
+           dessa maneira, porque o nome 'for' é uma palavra reservada da linguagem */
+        console.log(label.htmlFor) // A forma correta
+        // ou...
+        console.log(label.getAttribute('for')) // Acessando pelo 'getAttribute'
     </script>
 </body>
 

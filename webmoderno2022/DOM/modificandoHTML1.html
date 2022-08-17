@@ -9,7 +9,47 @@
 
 <body class='conteudo exercicio'>
     <script>
-        // ...
+        /* CRIANDO E INSERINDO ELEMENTOS */
+
+        const body = document.querySelector('body') // Pegando o body
+
+        // Criado uma 'div'
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque') // Colocando uma classe
+        div1.innerText = 'Primeiro' // Acresentando um texto
+
+        // Crianndo uma outra 'div'
+        const div2 = document.createElement('div')
+        div2.setAttribute('local','casa') // Definindo um atributo
+        div2.innerText = 'Segundo'
+
+        // Criando um elemento 'p'
+        const p = document.createElement('p')
+        p.innerText = 'Terceiro (P)'
+
+        // Criando a última 'div'
+        const div3 = document.createElement('div')
+        div3.appendChild(p) // Inserindo o elemento/tag 'p' na última div
+
+        // Inserindo as divs no 'body'
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3) // Nesse caso o 'p' também é inserido normalmente
+
+        // Criando um 'Nó' textual
+        const texto = document.createTextNode('Antes...')
+        // Inserindo esse texto, antes do primeiro 'Nó', nesse caso, antes do elemento 'p'
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        // Clonando um elemento existente
+        const div4 = div3.cloneNode(true) // O 'True' é para informar que também vai clonar os filhos
+        const txtClone = document.createTextNode('CLONADO= ')
+        div4.classList.add('destaque')
+        div4.insertBefore(txtClone, div4.childNodes[0])
+        body.appendChild(div4)
+
+        // Removenndo um elemento
+        body.removeChild(div1)
     </script>
 </body>
 

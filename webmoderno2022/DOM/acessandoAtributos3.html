@@ -16,7 +16,20 @@
         </ul>
     </div>
     <script>
-        // ...
+        const lista = document.querySelector('#compras')
+
+        // Acsando os Atributos, apenas para leitura //
+        console.log( lista.attributes )
+        console.log( lista.attributes[1] ) // Pelo 'index'
+        console.log( lista.attributes.destino ) // Nesse caso você pode usar a notação ponto que vai reconhecer
+        console.log( lista.attributes['destino'] ) // Pelo 'nome'
+
+        /*OBS: No caso do atributo 'data-urgencia', você não pode acessá-lo pela notação ponto porque ele
+          tem um ífem (-) e esse sinal é considerado menos (subtração) no JS, com isso, gera um erro */
+        
+        console.log( lista.attributes['data-urgencia'] ) // Modo de acessar esse atributo da forma correta
+
+        // Lembrado que esse modo pelo 'attributes' é somente leitura
     </script>
 </body>
 

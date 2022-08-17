@@ -15,7 +15,34 @@
         <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
     </div>
     <script>
-        // ...
+        const img = document.querySelector('img') // Pegando o elemento img
+
+        // Três formas diferentes de pegar um atributo de um elemento
+        console.log('getAttribute:',img.getAttribute('src'))
+        console.log('src:',img.src) // Funciona apenas para atributos padrão reconhecido para a tag
+        console.log('[src]:',img['src'])
+
+        console.log('\nElemento "img": ....................................')
+        // Todos elementos possúem essas propriedades que pode ser acessadas e manipuladas
+        console.log('NodeType:',img.nodeType) // É do tipo 1 (Você pode ver a lista completa dos tipos na internet)
+        console.log('NodeName:',img.nodeName)
+
+        console.log('\nDo Atributo "src" da imagem: ........................')
+        const src = img.getAttributeNode('src') // Pegando os dados de 'Nó' do atributo 'src' da imagem
+        
+        console.log('NodeType:',src.nodeType) // É do tipo 2
+        console.log('NodeName:',src.nodeName)
+        console.log('NodeValue:',src.nodeValue)
+
+        console.log('\nnElemento "a": ....................................')
+        const link = document.querySelector('a') // // Pegando o elemento a
+        
+        console.log('hred:',link.href) // Acessando o atributo
+        console.log('firstChild.nodeType:',link.firstChild.nodeType)
+        // Acessando o primeiro filho, nesse caso, o texto 'Cod3r'
+
+        link.firstChild.nodeValue = 'Olá Mundo!' // Alterando o valor do primeiro filho que é o texto
+        // OBS: Existem formas mais intuitívas de modificar atributos, colocado aqui, por fim didático
     </script>
 </body>
 
