@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        /* Criando um atributo 'log' nos Objetos de manipulação do DOM, para exibir direto
+           o 'console.log' dos atributos */
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+        // Fim
+
+        /* NAVEGANDO ENTRE OS ELEMENTOS */
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // Pega o elemento Pai
+        lista.childNodes.log()
+        /* Pega todos os filhos do elemento Pai. OBS: O 'childNodes', também coloca as
+           quebras de linhas como sendo filhos '#text' */
+
+        const primeiro = lista.firstChild
+        primeiro.log() // Vai exibir o primeiro filho, nesse caso o '#text' e não o 'li', por causa das quebras de linhas
+        primeiro.nextSibling.log() // Acessando o primeiro 'li', que nesse caso é o 'proximo' do '#text'
+
+        const ultimo = lista.lastChild
+        ultimo.log() // Ocorre o mesmo 'problema' do primeiro filho
+        ultimo.previousSibling.log() // Pegando o último 'li', nesse caso, que está antes do '#text'
+
+
+        lista.children.log()
+        // Diferente do 'childNodes' o 'children' pega apenas os elementos, mesmo com as quebras de linhas
+        lista.firstElementChild.log() // Com o 'firstElementChild' você pega realmento o primeiro elemento
+        lista.lastElementChild.log() // A mesma coisa com 'lastElementChild', acessa o último elemento
+
+        lista.parentNode.previousElementSibling.log()
+        /* Você pode juntar comandos, nesse caso, ele vai acessar o Pai com o 'parentNode', que é a 'div'
+         depois com 'previousElementSibling' ele vai acessa o elemento anterior, nesse caso, a
+         primiera 'div' da página */
+    </script>
+</body>
+
+</html>

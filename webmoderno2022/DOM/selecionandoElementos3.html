@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        /* SELECIONANDO FORMULÁRIOS */
+        console.log( document.forms ) // Pega todos os formulários do documento
+        console.log( document.forms[0] ) // Você pode acessar passando um 'index'
+        console.log( document.getElementsByName('pesquisa') ) // Pelo 'name' do elemento
+        console.log( document.getElementsByTagName('form') ) // Pelo nome da tag
+        /* Nota: o 'getElementsByName' retorna um 'NodeList' e o 'getElementsByTagName' um 'HTMLCollecitos' */
+
+        // Um modo mais intuitívo
+        console.log( document.pesquisa ) // Passando após o 'document' o nome do elemento
+        console.log( document.pesquisa.q ) // Acessando um input com name 'q' dentro do form 'pesquisa'
+        
+        // É possível modificar os atributos dos elementos do form:
+        document.pesquisa.q.value = 'Olá Mundo!'
+        document.pesquisa.hl.value = 'en-us'
+
+        console.log( document.pesquisa.hl.selectedIndex ) // Acessando outro atributo
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        document.querySelector('#primeiro').classList.add('destaque')
+        // Usando a propriedade 'querySelector' para selecionar um elemento
+
+        const selecionar = query => document.querySelectorAll(query).forEach(e => e.classList.add('destaque'))
+        // Criando uma função para automatizar a seleção do elemente e já aplicar a classe '.destaque'
+        /* NOTA: A propriedade 'querySelectorAll' retornar um 'NodeList' e não um Array, porém
+           com um 'NodeList' é possível usar o 'forEach'. */
+        const desselecionar = query => document.querySelectorAll(query).forEach(e => e.classList.remove('destaque'))
+        // Criando a função para remover a classe '.destaque' dos elementos informados
+
+        selecionar('div')
+        desselecionar('*') // Caractere universal que representa dos os elementos
+
+        selecionar('.terceiro.ultimo')
+        /* Selecionando um elemento que tenha na mesma classe, a classe '.terceiro' e a
+           classe '.ultimo' (Não importa a ordem) */
+
+        desselecionar('*')
+
+        // Como no CSS, o 'querySelector' permite trabalhar com Pseudo-classes:
+        selecionar(':not(#primeiro)')
+        // Vai selecionar todos elementos, menos o que tiver o id 'primeiro'
+
+        desselecionar('*')
+        selecionar(':nth-child(1)')
+        // Vai selecionar apenas o primeiro filho de todos elementos que tenham um ou mais filhos
+
+        desselecionar('*')
+        selecionar('div:nth-of-type(1)')
+        // Selecionando o primeiro elemento do tipo 'div'
+
+        desselecionar('*')
+        selecionar('[wb-attrib]')
+        // Selecionando os elementos que tenham o atributo 'wb-attrib'
+    </script>
+</body>
+</html>

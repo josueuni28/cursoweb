@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque')
+        // Selecionando o elemento pelo 'id' e aplicando uma classe '.destaque'
+
+        const divs = document.getElementsByTagName('div')
+        // Selecionando todos as tags de elementos 'div'
+        
+        /* Imporante: Quando você pode um ou mais elementos usando o DOM, ele vem no formatado 
+           'HTMLCollections', e esse formato não tem todas as funções de um array.
+           Você pode usar algumas técnicas caso precise transformar o 'HTMLCollections' em um Array. */
+
+        Array.from(divs).forEach( e => e.classList.remove('destaque') )
+        // Usando o 'Array.from()' para transformar o formato 'HTMLCollections' em um Array
+        const divsArray = [...divs]
+        // Você também pode usar o operador 'spread', para 'jogar' os elementos encontrados em um array
+
+        divsArray.forEach(e => e.classList.add('destaque'))
+        // Adicionando em todos elementos a classe '.destaque'
+
+        const ultimos = document.getElementsByClassName('ultimo')
+        // Selecionando elementos que tenham a classe '.ultimo'
+
+        // Você pode usar um 'For' para percorrer elementos com o formato 'HTMLCollections'
+        for(let e of ultimos){
+            e.classList.remove('destaque')
+        }
+
+    </script>
+</body>
+</html>
