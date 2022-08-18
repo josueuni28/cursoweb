@@ -10,6 +10,24 @@
 <body class="conteudo exercicio">
     <div>Elemento</div>
     <script>
-        // ...
+        // Movendo um elemento //
+
+        const item = document.querySelector('div')
+        item.style.position = 'absolute' // Mudando o position para 'absolute'
+
+        // o evento 'onmousemove' acontece quando o cursor está em cima do elemento
+        item.onmousemove = e => {
+            const item = e.target // Quem disparou o evento, nesse caso a 'div'
+            item.style.cursor = 'move'
+
+            // O 'buttons' do evento verifica se aconteceu um click, ele é um valor numérico, fica 1 quanto ocorre um click 
+            if(e.buttons){
+                // 'e.clientY' e o 'e.clientX' são as cordenadas da posição do cursor
+                // O 'clientHeight', 'clientWidth' são as dimensões do elemento, a 'div'
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+                // Essa equação é para o elemento se posicionar no centro do cursor...
+            }
+        }
     </script>
 </body>

@@ -30,7 +30,71 @@
             </select>
         <button wm-submit>Pesquisar</button>
     </form>
+    <h1>Formulário 2 (Outro modo de Intercepitar)</h1>
+    <form name="pesquisa2" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="en-us">Inglês (Americano)</option>
+            </select>
+        <button>Pesquisar (Modo 2)</button>
+        <!-- Este formulário não tem o propriedade personalizado no botão -->
+    </form>
     <script>
-        // ...
+        // Intercepitando os dados do formulário antes da submissão //
+
+        const submit = document.querySelector('[wm-submit]')
+
+        submit.onclick = e => {
+            e.preventDefault() // Interrompendo o envio imediato do formulário
+
+            const form = e.target.parentNode // Selecionando o formulário
+            const formData = new FormData(form)
+            // Tranformando todos os 'inputs' do formulário em um formato de dados
+
+            formData.append('ajax', true)
+            // Inserindos novos dados
+
+            console.log(formData.get('q')) // Pegando o valor de um dado existente
+            console.log(formData.has('hl')) // Verificando se um dado existe
+
+            console.log('\nPercorrendo os dados...')
+            for(const dados of formData){
+                console.log(dados)
+            }
+
+
+            console.log('\nAguarde 5 segundos...')
+            setTimeout(() => {
+                form.submit() // Enviando o formulário
+            }, 5000);
+        }
+
+        //--------------------------------------------------------------------------------
+
+        /* Outro modo de intercepitar, peganndo diretamento o formulário */
+        const form = document.forms[1] // Nesse caso é '1', porque o '0' é o primeiro formulário
+        form.onsubmit = e => {
+            e.preventDefault()
+
+            const form = e.target // Selecionando o próprio formulário
+            const formData = new FormData(form)
+
+            formData.append('ajax', false)
+
+            console.log(formData.get('q')) 
+            console.log(formData.has('hl'))
+
+            console.log('\nPercorrendo os dados (Modo 2)...')
+            for(const dados of formData){
+                console.log(dados)
+            }
+
+
+            console.log('\nAguarde, nesse caso, 3 segundos...')
+            setTimeout(() => {
+                form.submit() // Enviando o formulário
+            }, 3000);
+        }
     </script>
 </body>

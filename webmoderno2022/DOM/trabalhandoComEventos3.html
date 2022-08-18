@@ -45,7 +45,44 @@
     </div>
     <div class="direita" wm-dropzone></div>
     <script>
-        // ...
+        // Arrastando Elementos //
+
+        const itens = document.querySelectorAll('[wm-dropzone] .item')
+        // Pegando todos os filhos com classe '.item' que tem como elemento pai a propriedade '[wm-dropzone]'
+        
+        // Percorrendo os elementos selecionados
+        itens.forEach((item, index) => {
+            item.draggable = true // Colocando em todos os elementos a propriedade 'draggable' (Que permite arrastar)
+            item.id = item.id || `draggable-item-${index}`
+            // Definindo um 'id' para o elemento caso ele não tenha
+
+            item.ondragstart = e => { // Entrando no evento 'ondragstart' do propriedade 'draggable'
+                e.dataTransfer.setData('item-id', e.target.id)
+                /* Usando o método 'dataTransfer' do evento, para 'guardar' o 'id' do elemento
+                   que começou a ser arrastado */
+            }
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]') // Selecionando as 'zonas' de drop
+        dropzones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault()
+            /* Por padrão, dados/elementos não podem ser 'soltados' em outros elementos.
+               Para permitir uma queda, devemos evitar a manipulação padrão do elemento. */
+
+            dropzone.ondrop = function (e) {
+                // Entrando no evento 'ondrop' do elemento/'zona' que vai receber o elemento 'soltado'
+
+                const id = e.dataTransfer.getData('item-id') // Pegando o 'id' do elemento que foi armazenado
+                
+                const item = document.getElementById(id)
+                // Selecionando o elemento na DOM pelo 'id' (transferido)
+
+                //e.target.appendChild(item)
+                // Se usar o 'e.target', ele 'soltará' o elemento em qualquer outro elemento em que o cursor estiver em cima
+                dropzone.appendChild(item) // 'Soltará' apenas na 'dropzone' em que está em cima
+            }
+        })
+
     </script>
 </body>
 

@@ -9,9 +9,47 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <a href="https://google.com.br" onclick="navegarEm5segs(event)">Google <em>(Direto na Tag)</em></a>
+        <!-- Por mais que fica bem explícito, não é eficiente colocar o evento direto na tag -->
+        <br>
+
+        <a class="espera" href="https://google.com.br">Google <em>(Usando uma classe)</em></a>
+        <!-- Usar classe é uma alternativa porem pode gerar confusão com os estilos -->
+        <br>
+
+        <a espera-5segs href="https://google.com.br">Google <em>(Propriedade personalizada)</em></a>
+        <!-- O mais apropriado é usar uma Propriedade Personalizada na tag, porque você
+             evidência que existe alguma manipulação no elemento e pode ser reutilizado... -->
     </div>
     <script>
-        // ...
+        function navegarEm5segs(e) {
+            e.preventDefault() // Interrompendo o evento padrão (Que seria o redirecionamento imediato)
+            console.log('Saindo em 5 segundos...')
+            const link = e.target
+            // O 'target' é uma propriedade do evento disparado (Quem disparou o evento), que você pode pegar
+
+            let emTag = link.firstElementChild,
+                go = link.href
+            
+            if(link.nodeName != 'A'){
+                emTag = link
+                go = link.parentNode.href
+            }
+
+            emTag.innerText = '(Aguarde...)'
+
+            setTimeout(() => {
+                window.location.href = go
+            }, 5000)
+        }
+
+        // Adicionando o evento a classe
+        const linkClasse = document.querySelectorAll('.espera')
+        linkClasse.forEach(elemento => elemento.onclick = navegarEm5segs)
+
+        // Adicionando o evento a propriedade personalizada
+        const linkPropPersonalizada = document.querySelectorAll('[espera-5segs]')
+        linkPropPersonalizada.forEach(elemento => elemento.onclick = navegarEm5segs)
+
     </script>
 </body>
