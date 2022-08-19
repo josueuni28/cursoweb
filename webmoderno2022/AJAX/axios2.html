@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Axios Get/Post</h1>
+    <div id="get"></div>
+    <div id="post"></div>
+
+    <script>
+        // Criando as funções para as respostas das requisições
+        function exibeParImpar(id, dados) {
+            const texto = `<em>O número ${dados.num} é: <strong>${dados.parouimpar}</strong></em>`
+            document.getElementById(id).innerHTML = texto
+        }
+
+        function exibeFormulario(id, dados) {
+            let html = ''
+            
+            for(let item in dados)
+                html += `<strong>${item}:</strong> <em>${dados[item]}</em><br>`
+
+            return document.getElementById(id).innerHTML = html
+        }
+
+        /*Passando a URL diretamente: (Semelhante ao exercicio do 'axios1.html') */
+        //axios('parOuImpar?numero=8').then(resp => exibeParImpar('get', resp.data))
+
+        // Fazendo o 'GET', com os parâmetros
+        axios.get('parOuImpar', {
+            params: {
+                numero: 5
+            }
+        }).then(resp => exibeParImpar('get', resp.data))
+
+        // Fazendo o 'POST' da aula 'fetch2.html'
+        axios.post('formulario', {
+            nome: 'Luiz',
+            sobrenome: 'Felipe'
+        }).then(resp => exibeFormulario('post', resp.data))
+    </script>
+</body>

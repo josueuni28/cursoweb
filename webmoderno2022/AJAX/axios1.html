@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        // Usando a biblioteca 'axios'
+        axios(url).then(resp => {
+            /* A maior diferença entre o 'fetch' e o 'axios', é que você não precisa converter os
+               dados para JSON, com os 'axios' eles já vem transformados, pelo atributo '.data' */
+            const itens = resp.data.reduce((html, item) => {
+                    return html + `<li>${item.nome} (${item.sigla})</li>`
+                }, '')
+
+                document.body.insertAdjacentHTML('beforeend',`<ul>${itens}</ul>`)
+            })
+            .catch(e => document.body.insertAdjacentText('beforeend', e))
+            // O erro com o 'axios' vem mais 'refinado'
+    </script>
+</body>

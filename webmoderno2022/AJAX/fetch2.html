@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário Via Fetch</h1>
+    <form name="usuarioForm" action="formulario" method="post">
+        <input type="text" name="nome" placeholder="Nome..." />
+        <input type="text" name="sobrenome" placeholder="Sobrenome..." />
+        <button>Salvar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        const resultado = document.getElementById('resultado')
+
+        // Pegando o formulário com o nome atraves do 'document'
+        document.usuarioForm.onsubmit = async e => {
+            // Como é uma promessa o função precisa ser 'async'
+            e.preventDefault()
+            // Parando o envio imediato
+
+            const formulario = e.target
+            const data = new FormData(formulario)
+            // Transformando as entradas do formulário em um 'FormData'
+
+            // Configurando, nesse caso, as opções do 'fetch'
+            const options = {
+                method: formulario.method, // Passando o tipo de 'método' do formulário
+                body: new URLSearchParams(data)
+                /* Criando um Objeto por meio da função 'URLSearchParams' com os parametros do
+                   formulário(data) para serem enviado no 'body', e não chegar lá apenas uma 'url' */
+            }
+
+            // Passando a URL do 'action' do formulário e as 'opções', no fetch
+            fetch(formulario.action, options)
+                .then(resp => resp.json())
+                .then(json => {
+                    let html = ''
+                    // Manipulando os dados enviados em JSON
+                    for(let item in json)
+                        html += `<div class="valor"><strong>${item}:</strong> <em>${json[item]}</em></div>`
+
+                    return resultado.innerHTML = html // Exibindo os valores
+                })
+                .catch(e => resultado.innerHTML = e)
+            
+            /* VOCÊ TAMBÉM PODERIA USAR COMO ALTERNATIVA O Try Catch: */
+
+            // try {
+            //     const resp = await fetch(formulario.action, options)
+            //     const json = resp.json()
+            //     resultado.innerHTML = JSON.stringify(json)
+            // } catch (e) {
+            //     resultado.innerHTML = e
+            // }
+        }
+    </script>
+</body>

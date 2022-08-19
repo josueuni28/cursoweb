@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados (Com XML)</h1>
+
+    <script>
+        const body = document.querySelector('body')
+
+        /* Criando um função ajax usando XMLHttpRequest, para fazer uma requisição em um XML */
+
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+
+            // Usando agora o método 'onreadystatechange', ao invés do 'onload'
+            xhr.onreadystatechange = e => {
+                /* O 'readyState' possúi quatro 'estados', com o 'readyState' no valor 4,
+                o conteúdo já está pronto para ser lido (É o 'estado' final) */
+                // DICA: Você pode usar o 'estado' valor 3 se desejar acompanhar/tratar o progresso.
+                if(xhr.readyState == 4){
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        // Se deu sucesso, nesse caso a resposta já vai 'transformada' em um XML
+                        config.sucesso(xhr.responseXML)
+
+                    }else if(xhr.status >= 400) {
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
+
+        ajax({
+            url: 'dados/estados.xml', // Nesse caso, definindo o arquivo XML
+            metodo: 'get',
+            sucesso(resposta){
+                // O '.responseXML' envia um conteúdo como se fosse elementos de HTML
+                const estados = resposta.getElementsByTagName('estado')
+                // Como é um 'XML transformado', selecionando os dados pela tag deles
+
+                // Transformando os dados em um array e aplicando o 'reduce'
+                const itens = Array.from(estados).reduce((html, item) => {
+                    return html + `<li>${item.attributes.nome.value}</li>`
+                }, '') /* É importante que esse últimoa parâmetro (''), seja passado e em branco,
+                          se não o primeiro elemento não é 'reduzido' da maneira correta */
+
+                // Nesse caso, como é uma 'string', não podemos dar o .appendChild()
+                body.insertAdjacentHTML('beforeend','<ol>'+itens+'</ol>')
+            },
+            erro(e){
+                const msg = document.createTextNode(`${e.codigo} ${e.texto}`)
+
+                body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

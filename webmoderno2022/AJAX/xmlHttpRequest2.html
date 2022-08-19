@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <input type="file" name="arquivo" />
+    <div class="progresso"></div>
+
+    <script>
+        function ajaxUpload(config) {
+            const xhr = new XMLHttpRequest()
+
+            // Configurando o 'XMLHttpRequest' para tratar o upload
+            if(xhr.upload){
+                xhr.upload.onprogress = e => {
+                    const atual = e.loaded
+                    const total = e.total
+                    const percentual = Math.floor(atual / total * 100)
+
+                    // Durante o envio do arquivo, passando os dados para a função do Objeto config tratar...
+                    config.progresso({atual, total, percentual})
+                }
+            }
+
+            // Usando o método 'post'
+            xhr.open('post', config.url, true)
+
+            // Nesse caso, como se trata de um arquivo, será enviado como um 'FormData'
+            xhr.send(config.formData)
+        }
+
+
+        const inputFile = document.querySelector('input[type="file"]')
+
+        // Fazendo o 'upload' assim que o usuário selecionar o arquivo, com o evento 'onchange'
+        inputFile.onchange = e => {
+            const formData = new FormData()
+            const input = e.target
+            formData.append(input.name, input.files[0])
+
+            // Chamando a função XMLHttpRequest 'ajaxUpload'
+            ajaxUpload({
+                url: 'upload',
+                formData,
+                progresso(dados){
+                    const el = document.querySelector('.progresso')
+                    const convertido = {
+                        atual: Math.floor(dados.atual / 1000),
+                        total: Math.floor(dados.total / 1000)
+                    }
+                    el.innerHTML = `${dados.percentual}% (Enviado: ${convertido.atual}MB / Tamanho total: ${convertido.total}MB)`
+                }
+    
+            })
+        }
+
+    </script>
+</body>
