@@ -20,12 +20,12 @@
 
 <body class="conteudo">
     <nav>
-        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
-        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+        <a href="#series" wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href="#linguagens" wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
     </nav>
     <div class="pagina"></div>
     <footer>
-        <a href="indexV2.html">Ir para versão 2</a>
+        <a href="index.html">Voltar para versão 1</a>
     </footer>
     <script>
         // Criando uma função para fazer a requisão das páginas
@@ -34,6 +34,7 @@
             // Se a 'url ou o 'seletor' não estiverem sidos passados, já para a função
 
             const elemento = document.querySelector(seletor)
+            const myUrl = window.location.hash
 
             fetch(url)
                 .then(resp => resp.text())
@@ -41,14 +42,6 @@
                 .then(html => {
                     elemento.innerHTML = html
                     // Coloque o 'conteúdo' da página recebida no elemento 'seletor' da página atual
-                    if(push){
-                        /* O parâmetro 'push' é utilizado para verificar se o usuário clicou no link,
-                           se sim, cria um 'pushState' para poder usar o 'histórico' para navegar,
-                           nas requisições (Como se estive indo para página, 'mudando' a url porém
-                           contínua na página atual) */
-                        history.pushState({ seletor }, null, url)
-                        // Passa o seletor, o título que é 'null' e a url
-                    }
                 })
                 .catch(e => console.log(e))
         }
@@ -59,18 +52,20 @@
             // Pega os atributos da tag que tem a propriedade '[wm-link]'
 
             link.onclick = e => {
-                e.preventDefault()
+                //e.preventDefault()
                 navegarViaAjax(url, seletorDestino) // Chama a função quando clica no link
             }
         })
 
         // Usa o evento 'onpopstate' para verificar se o usuário está usando os botão de navegar do browser
         window.onpopstate = e => {
-            if(e.state){
-                /* Verifica se foi feito um .pushState(), se sim, chama a função de navegar, passando
-                   a url atual (que foi alterada), o seletor (armazenado), e atribuindo 'false' no
-                   parâmetro 'push' da função, para ele não fazer o pushState (Por já que 'está' na página) */
-                navegarViaAjax(window.location.href, e.state.seletor, false)
+            const wh = window.location.hash
+            if(wh){ // Verifica se existe algum 'hash' na url
+                const hash = String(wh).slice(1) + '.html'
+                const seletor = document.querySelector('a[href="'+wh+'"]')
+                navegarViaAjax(hash, seletor.attributes['wm-destino'].value, false)
+            }else{
+                document.location.reload()
             }
         }
     </script>

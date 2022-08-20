@@ -82,3 +82,11 @@ div#resultado .valor {
 }
 
 div#resultado .valor strong {text-transform: capitalize;}
+
+footer a {
+    color: aquamarine;
+}
+
+footer {
+    margin-top: 20px;
+}

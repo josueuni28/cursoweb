@@ -5,6 +5,7 @@
     <meta charset='UTF-8'>
     <title>Ajax com jQuery</title>
     <link rel='stylesheet' href='css/estilo.css'>
+    <!-- Importando o JQuery -->
     <script src="js/jquery.js"></script>
 </head>
 
@@ -14,6 +15,47 @@
     <div id="post"></div>
 
     <script>
+        // Criando as funções para as respostas das requisições
+        function exibeParImpar(id, dados) {
+            const texto = `<em>O número ${dados.num} é: <strong>${dados.parouimpar}</strong></em>`
+            document.getElementById(id).innerHTML = texto
+        }
+
+        function exibeFormulario(id, dados) {
+            let html = ''
+            
+            for(let item in dados)
+                html += `<strong>${item}:</strong> <em>${dados[item]}</em><br>`
+
+            return document.getElementById(id).innerHTML = html
+        }
         // ...
+
+        /* Fazendo requisições AJAX via JQuery */
+        // Nesse caso, o JQuery simplifica o método 'xmlHttpRequest'
+        $.ajax({
+            url: 'parOuImpar',
+            data: {
+                numero: 9
+            },
+            success(data){
+                exibeParImpar('get', data)
+            }
+        })
+
+        $.ajax({
+            url: 'formulario',
+            method: 'post',
+            data: {
+                /* Como a requisição para a URL 'formulário', fizemos ela sempre voltar o que você manda, você pode
+                   enviar qualquer coisa... */
+                nome: 'Luiz',
+                sobrenome: 'De Oliveira',
+                idade: '38'
+            },
+            success(data){
+                exibeFormulario('post', data)
+            }
+        })
     </script>
 </body>
