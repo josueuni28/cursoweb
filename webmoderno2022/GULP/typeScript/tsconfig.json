@@ -1,0 +1,16 @@
+{
+    /* 'files' é mais indicado para arquivos específicos, como está abaixo */
+    // "files": [
+    //     "src/app.ts"
+    // ],
+
+    /* 'incluide' já aceita expressões de arquivos... */
+    "include": [
+        "src/**/*.ts"
+    ],
+    "compilerOptions": {
+        "rootDir": "src",
+        "noImplicitAny": true,
+        "target": "es5" // Fazer o uso da versão 'ES5' para ter maior compatibilidade
+    }
+}
