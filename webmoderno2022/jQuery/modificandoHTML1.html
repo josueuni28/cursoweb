@@ -13,8 +13,39 @@
     <div id='conteudo1'></div>
     <div id='conteudo2'></div>
     <div id='conteudo3'></div>
+    <div>Sem ID!</div>
 
     <script>
-        // ...
+        // Conteúdo 1
+        $('#conteudo1').append('<p>1</p>') // Inserindo elemento com 'append'
+
+        // Conteúdo 2
+        const elementos = [ // Criando uma lista de elemento 'li' e já inserindo textos neles
+            $('<li></li>').append('Arroz'),
+            $('<li></li>').append('Feijão'),
+            $('<li></li>').append('Carne'),
+        ]
+
+        // Criando uma 'ul' com uma 'li' dentro, e já inserindo os outros elementos dentro da 'ul'
+        const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos)
+
+        // Adicionado toda a lista ao '#conteúdo2'
+        $('#conteudo2').append(lista)
+
+        // Conteúdo 3
+        // Três Modos de usar o append/prepend:
+        //  $('#conteudo3').append('<h1>1</h1>').append('<h1>2</h1>').prepend('<h1>3</h1>')
+        //  $('#conteudo3').append('<h1>1</h1>','<h1>2</h1>','<h1>3</h1>')
+        //  $('#conteudo3').append(['<h1>1</h1>','<h1>2</h1>','<h1>3</h1>'])
+
+        $('#conteudo3').append(['<h1>1</h1>','<h1>2</h1>']).prepend('<h1>3</h1>')
+
+        //...
+
+
+        $('#conteudo3').html('<h1>Olá Mundo<h1/>') // Substituindo tudo de '#conteudo3' por um 'h1'
+        $('#conteudo3').text('<h1>Olá Mundo<h1/>') // Substituindo tudo de '#conteudo3' por um texto
+        
+        $('div[id]').html('<h1>Todos!<h1/>') // Substituindo todos 'div' que tenham o atributo 'id'
     </script>
 </body>

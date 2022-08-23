@@ -22,7 +22,62 @@
 <body class='conteudo exercicio'>
     <h1>Manipulando Atributos</h1>
     <div wm-relogio='1000'></div>
+    <!-- Criando um segundo relógio -->
+    <div wm-relogio='2000'></div>
     <script>
-        // ...
+        function Relogio(elemento) {
+            const horaCerta = $('<p>').text('0') // criando a tag 'p' e colocando o valor '0'
+            const botaoMais = $('<button>').text('+')  // criando o 'button' e colocando o valor '+'
+            const botaoMenos = $('<button>').text('-') // criando o 'button' e colocando o valor '-'
+            
+            const $elemento = $(elemento) // Convertendo o elemento vindo do DOM puro, para a estrutura jQuery
+            $elemento.append(horaCerta, botaoMais, botaoMenos) // Aplicando os elementos criados  
+            
+            // Criando uma função que retorna em Inteiro o valor do atributo do elemento
+            const getIntervaloAtual = () => parseInt($elemento.attr('wm-relogio'))
+            let temporizador = null // Definindo o 'temporizador'
+            
+            // Criando a função que executa o Relogio
+            const iniciar = () => {
+                // Se o temporizador estiver 'ativo', limpa ele
+                if (temporizador) clearInterval(temporizador)
+
+                // Aplica o intervalo que está no atributo do elemento ao temporizador
+                temporizador = setInterval(() => {
+                    horaCerta.html(new Date().toLocaleString('pt-BR'))
+                }, getIntervaloAtual())
+            }
+
+            // Criando a função que altera o intervalo
+            const alterarIntervalor = delta => {
+                // Usando uma técnica com o Math.max para não permitir que o valor fique menos do que '1000'
+                const novo = Math.max(getIntervaloAtual() + delta, 1000)
+                // Também Poderia ser usado uma operação comum de verificação ternária sem problemas
+
+                $elemento.attr('wm-relogio', novo) // Aplicando o valor 'alterado' ao atributo do elemento
+                iniciar() // Chama a função iniciar
+            }
+
+            // Chama a função para alterar o intervalo ao clicar nos botões
+            botaoMais.click(e => alterarIntervalor(-1000))
+            botaoMenos.click(e => alterarIntervalor(1000))
+
+            // 'Starta' o Relógio pela primeira vez
+            iniciar()
+        }
+
+        /* Percorre os elementos com o atributo 'wm-relogio' e para cada um que encontrar, instância
+           uma nova função do Relógio */
+        $('[wm-relogio]').each( (i, e) => new Relogio(e) )
+
+        // Com isso você pode ter mais de um 'Relógio' na sua aplicação
+
+        /* --------------- RESUMO SOBRE O .attr() ------------------------ */
+
+        // $('[wm-relogio]').attr('opa') -> Para ler
+        // $('[wm-relogio]').attr('opa', 3) -> Para definir ou modificar
+
+        $('[wm-relogio]').attr({ novo: 'Olá', opa: 5 }) // Passando um Objeto, nesse caso, defini 2 atributos
+        $('[wm-relogio]').removeAttr('opa') // Remove um atributo
     </script>
 </body>

@@ -16,10 +16,49 @@
 <body class='conteudo exercicio'>
     <h1>Eventos #01</h1>
     <div id='posicao'></div>
-    <div id='cliques'>Cliques: 0</div>
+    <div id='cliques'>Cliques: <strong>0</strong></div>
     <input type="text" placeholder="Cor de Background">
 
     <script>
-        // ...
+        // Criando uma função para capturar a posição do ponteiro do mouse
+        function mostraPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // Aplica a função ao evento 'mousemove' do 'body'
+        $('body').on('mousemove', mostraPosicaoMouse)
+
+        $('#posicao').mouseover(e => {
+            // Se o cursor estiver em cima do elemento '#posicao', encerra o evento do 'body'
+            $('body').off('mousemove', mostraPosicaoMouse)
+        })
+
+        // Se o cursor sair do elemento, ativa novamente o evento do 'body'
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostraPosicaoMouse)
+            // $('body').on('mousemove', mostraPosicaoMouse) -> Pode ser assim também
+        })
+
+        let cliques = 0
+        // Usando o evento 'click' para contar cada clique dado dentro do 'body'
+        $('body').click(e => $('#cliques > strong').text(++cliques))
+        // A expressão '++' antes da variavel, faz primeiro o incremento depois exibe a variavel 
+
+        const bgOriginal = $('body').css('background-color') // Pegando a cor de fundo do 'body'
+
+        // Usando o evento 'keyup' (Quando solta a tecla) no 'input', para aplicar a cor em tempo real
+        $('input').keyup(function(e) {
+            // NOTA: Cuidado ccom o 'this', aqui não pode ser 'arrow function'
+            const valor = $(this).val() // Pega o valor do 'input'
+
+            // Faz uma verificação com 'expressão regular' para saber se o valor digita está no padrão hexadecimal
+            if(valor.match(/#[\da-fA-F]{3,6}/)){
+                // Se tiver aplica o cor digitada
+                $('body').css('background-color', valor)
+            }else{
+                // Se não, aplica a cor original
+                $('body').css('background-color', bgOriginal)
+            }
+        })
     </script>
 </body>

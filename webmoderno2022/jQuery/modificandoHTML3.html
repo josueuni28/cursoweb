@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='UTF-8'>
-    <title>Modificando HTML #03</title>
+    <title>Desafio HTML #03</title>
     <link rel='stylesheet' href='css/estilo.css'>
     <script src='js/jquery.js'></script>
 </head>
@@ -15,11 +15,42 @@
     <script>
         const pessoas = [
             { nome: 'Ana', nota: 9.1 },
-            { nome: 'Bianca', nota: 8.4 },
-            { nome: 'Carlos', nota: 7.6 },
-            { nome: 'Julia', nota: 9.7 }
+            { nome: 'Bianca', nota: 8.4},
+            { nome: 'Carlos', nota: 7.6},
+            { nome: 'Julia', nota: 9.7}
         ]
+
+        // Criando a função...
+        function criaTable(Obj) {
+            const capitaliza = val => val[0].toUpperCase() + val.slice(1)
+
+            const keys = Object.keys(Obj[0])
         
-        // ...
+            const table = $('<table>')
+            const thead = $('<thead>')
+            const tbody = $('<tbody>')
+            const tagTh = []
+            const tagTr = []
+
+            for(let th of keys) tagTh.push(`<th>${capitaliza(th)}</th>`)
+            
+            thead.append(tagTh).children().wrapAll('<tr>')
+            
+            for(let td of Obj){
+                const tagTd = []
+                for(let val of Object.values(td)) tagTd.push(`<td>${val}</td>`)
+                tagTr.push( $('<tr>').append(tagTd) )
+            }
+
+            tbody.append(tagTr)
+            
+            return table.append(thead).append(tbody)
+        }
+
+        /* Usando o $(function(){ <código> }) que ele só executa quando a página está pronta, todos
+           os elementos DOM foram carregados */
+        $(function(){
+            $('#conteudo').append(criaTable(pessoas))
+        })
     </script>
 </body>

@@ -10,13 +10,50 @@
 
 <body class='conteudo exercicio'>
     <h1>Modificando HTML #02</h1>
-    <div id='div1'>1</div>
-    <div id='div2'>2</div>
-    <div id='div3'>3</div>
+    <div id='div1'>d1</div>
+    <div id='div2'>d2</div>
+    <div id='div3'>d3</div>
     <p class='numero'>4</p>
     <p class='numero'>5</p>
+    <p class='dentro'>6</p>
+    <p class='dentro'>7</p>
+    <div id='div4'>d4</div>
+    <div id='div5'>Serei removido</div>
+    <em>em1</em>
+    <em>em2</em>
+    <p class="subs">p1</p>
+    <p class="subs">p2</p>
+    <span>Olá</span>
+    <span>Mundo</span>
 
     <script>
-        // ...
+        // appendTo/prependTo é o mesmo que o append/prepend, só que invertido.
+        /* OBS: Porém como ele é mais genérico, você precisa passar o conteúdo com tags, se não,
+           o jQuery não reconhece e gera erro. */
+        $('<span>, 2</span>').appendTo('#div1')
+        $('<span>0, </span>').prependTo('#div1')
+
+        $('#div2').before('<p>Antes</p>') // Inserindo antes do elemento
+        $('#div2').after('<p>Depois</p>') // Inserindo depois do elemento
+        
+        // Faz o mesmo que o exemplo anterior, porém invertido, mesma *OBS acima:
+        $('<p>Antes 3</p>').insertBefore('#div3')
+        $('<p>Depois 3</p>').insertAfter('#div3')
+
+        $('p.numero').wrap('<div>') // Coloca cada 'p' com classe 'numero' dentro de uma 'div'
+        $('p.dentro').wrapAll('<div>') // Coloca todos dentro da mesma 'div'
+
+        $('#div4').empty() // Esvazia o elemento
+        $('#div4').next().remove() // Remove o elemento
+
+        $('body > p.subs').replaceWith('<div>Subistituido</div>') // Substitúi o(s) elemento(s)
+        $('<div>Subistituido</div>').replaceAll('body > em') // O mesmo, porém invertido, mesmo *OBS
+
+        // Você pode chamar uma função callback no 'replaceWith'
+        $('body > span').replaceWith(function () {
+            /* Percorre cada elemento, pega o conteúdo e coloca ele dentro de uma 'div' com a
+               classe 'destaque' */
+            return $('<div class="destaque">').html( $(this).html() )
+        })
     </script>
 </body>
