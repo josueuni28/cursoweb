@@ -17,11 +17,45 @@
         Texto 2
         {{ console.log('Funcionou!') }}
         Texto 3
-        {{ (function() { return 'Legal!!!' })() }}
+        {{ (function (){ return 'Legal!!!' })() }}
         Texto Final
     </div>
 
     <script>
-        // ...
+        /* Protegendo o caractere de dolar ( $ ) do jQuery, para quando chamar ser realmente ele, porque
+           podem ter outras bibliotecas que podem usar o mesmo símbolo e gerar conflito */
+        (function ($) {
+            $.fn.interpretar = function () {
+                const conteudo = $(this).html() // Pegando todo conteúdo do elemento
+                const retiraChaves = str => str.substring(2, str.length-2)
+                /* Criando uma função que retorna a string sem os dois caracteres iniciais e
+                   finais (Que nesse caso, serão as chaves) */
+                
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                // O 'match' com a flag 'g' gera um array com todas expressões encontradas
+
+                const expressoes = expressoesComChaves.map( retiraChaves )
+                // Retirando as chaves das expressões para ficar apenas o conteúdo
+                
+                const resultados = expressoes.map(e => eval(e))
+                /* Amazenando no constante 'resultados' as expressões convertidas em código com a
+                   função 'eval' do JS que transforma uma string de código em código executável */
+                /* Não usar 'eval' por questões de segurança, se for usar, apenas em excessões */
+
+                let conteudoFinal = conteudo
+                // Convertendo os valores de expressão do conteudo no resultado dos códigos gerados
+                for(let i=0; i < expressoes.length; i++){
+                    conteudoFinal = conteudoFinal.replace( expressoesComChaves[i], resultados[i] )
+                }
+
+                // Substituindo o 'html' original pelo resultado 'interpretado'
+                $(this).html(conteudoFinal)
+
+                return this
+                // Retornando o 'this' para permitir que o plugin possa ser encadeado com outras chamadas
+            }
+        })(jQuery)
+
+        $('div').interpretar() // Chamando o plugin 'interpretar'
     </script>
 </body>

@@ -28,6 +28,33 @@
     <div>Animar!</div>
 
     <script>
-        // ...
+        /* Criando as funções de animação com a utilização do 'callback'
+           (Porém é recomendado usar promises ou async/await) */
+        function alterarLargura(valor, duracao, callback){
+            $('div').animate({ width: `+=${valor}` }, duracao, callback)
+        }
+
+        function moverDiagonal(valor, duracao, callback){
+            $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, callback)
+        }
+
+        function girar(valor, duracao, callback){
+            $('div').animate({ transform: `+=${valor}` }, {
+                step: function (valor) {
+                    $(this).css('transform',`rotate(${valor}deg)`)
+                },
+                duration: duracao
+            }, 'linear', callback)
+        }
+
+        // Chamando as funções de animações encadeadas
+        alterarLargura(400, 2000, () => {
+            // É possível passar valor de tempo 'padrão' do jQuery como 'show', 'slow', 'fast'
+            alterarLargura(-400, 'show', () => {
+                moverDiagonal(300, 3000, () => {
+                    girar(2000, 5000)
+                })
+            })
+        })
     </script>
 </body>

@@ -16,11 +16,47 @@
 <body class='conteudo exercicio'>
     <h1>Eventos #02</h1>
     <div id='div1'>1</div>
+    <div id='div2'>2</div>
     <div id="resultado1">?</div>
     <br>
     <input type="text" placeholder="Digite e Selecione">
     <div id="resultado2">?</div>
     <script>
-        // ...
+        // Criando a função Destaque
+        const alternarDestaque = function(e) {
+            $(this).toggleClass('destaque')
+        }
+        $('#div1').hover(alternarDestaque, alternarDestaque)
+        // É o mesmo que: $('#div1').hover(alternarDestaque)
+        /* O 'hover' tem um segundo parâmetro opcional callback, se você não passa nada ele
+           chama a mesma função, por isso o 'toggleClass' funciona */
+
+        // Você pode encadear mas de um evento com o 'on', nesse caso, funciona como o 'hover' acima
+        $('#div2').on('mouseenter mouseleave', alternarDestaque)
+        
+        // O evento 'one', só ocorre uma vez
+        $('#div1').one('mouseenter', () => alert('Só aparecerei uma vez'))
+
+        // O 'dbclick' dispara ao dar duplo clique no elemento
+        $('#div2').dblclick(e => $('#div2').fadeOut(2000).fadeIn(1000))
+
+        // Usando o evento 'resize' no Objeto 'window' para capturar quando ocorre uma mudança no tamanho da janela
+        $(window).resize(function (e) {
+            const w = $(this).width()
+            const h = $(this).height()
+
+            $('#resultado1').html(`Altura: ${h}, Largura: ${w}`)
+        })
+
+        // O evento 'select' ocorre quando uma parte do texto é selecionada
+        $(':input').select(e => {
+            // Usando o 'e.target' porque é uma 'arrow function' e o 'this' aqui não funcionará
+            const inicio = e.target.selectionStart
+            const fim = e.target.selectionEnd
+
+            // Pegando apenas aparte do conteudo selecionado, com os valores obtidos do evento
+            $('#resultado2').html(e.target.value.substring(inicio, fim))
+        })
+        
     </script>
 </body>
