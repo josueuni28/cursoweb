@@ -1,0 +1,143 @@
+<!-- Título (jumbotron) -->
+<!-- Breadcrumb -->
+<div class="jumbotron p-4 my-1">
+    <h1 class="display-4">Grid</h1>
+    <p class="lead">A revolução da responsividade!</p>
+  </div>
+<nav aria-label="breadcrumb" class="mb-5">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#/paginas/bemVindo.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Grid</li>
+    </ol>
+</nav>
+
+<p class="lead">
+    <a href="https://getbootstrap.com/docs/4.0/layout/grid/"
+        target="_black">Documentação Oficial</a>
+</p>
+
+<div class="exercicio">
+    <h1>1. Grid Básica</h1>
+    <hr>
+
+    <!-- Grid Básica -->
+    <!-- Uma Grid, o Bootstrap divide em 12 partes, se você não especificar ele calcula de forma
+         igual ou restante, e você pode dar um valor de 1 a 12 que será ocupado (No exemplo
+         da segundo 'row') -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col bg-primary">1</div>
+            <div class="col bg-danger">2</div>
+            <div class="col bg-warning">3</div>
+            <div class="col bg-info">4</div>
+            <div class="col bg-secondary">5</div>
+        </div>
+        <div class="row">
+            <div class="col bg-primary">1</div>
+            <div class="col-4 bg-danger">2</div>
+            <div class="col-5 bg-warning">3</div>
+            <div class="col bg-info">4</div>
+        </div>
+    </div>
+
+    <h1 class="mt-5">2. Grid Responsiva</h1>
+    <hr>
+
+    <!-- Grid Responsiva -->
+    <!-- Criando responsividade com os tamanhos predefinidos do Bootstrap que são:
+         (extra pequeno) não informa nada, 'sm' (pequeno), 'md' (medio), 'lg' (larga), 'xl' (extra larga) -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-primary">1</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-danger">2</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-warning">3</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-info">4</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-secondary">5</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-success">6</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-primary">7</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-danger">8</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-warning">9</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-info">10</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-secondary">11</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-success">12</div>
+        </div>
+    </div>
+
+    <h1 class="mt-5">3. Quebra de Linha</h1>
+    <hr>
+
+    <!-- Quebra de Linha -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 bg-primary">1</div>
+            <div class="col-3 bg-danger">2</div>
+            <!-- Tecnica para quebrar a linha antes, usando uma div vazia com a class 'w-100'
+                 que ocupa 100% da tela, e nesse momento ele quebra a linha -->
+            <div class="w-100"></div>
+            <div class="col-3 bg-secondary">3</div>
+        </div>
+        <div class="row">
+            <div class="col-3 bg-primary">1</div>
+            <div class="col-3 bg-danger">2</div>
+            <!-- Tambem pode quebrar naturalmente se a conta passar de 12, nesse caso, quebra
+                 que a col abaixo está ocupando 7 espaços e as outras duas acima 6. -->
+            <div class="col-7 bg-warning">3</div>
+            <div class="col-3 bg-secondary">4</div>
+        </div>
+    </div>
+
+    <h1 class="mt-5">4. Ordem</h1>
+    <hr>
+
+    <!-- Ordem -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Alterando a ordem de posicinamento com a classe 'order' (vai de 1 a 12) -->
+            <div class="col-3 order-5 bg-primary">1</div>
+            <div class="col-3 order-12 bg-danger">2</div>
+            <div class="col-3 order-1 bg-secondary">3</div>
+        </div>
+    </div>
+
+    <h1 class="mt-5">5. Offset</h1>
+    <hr>
+
+    <!-- Offset -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 offset-7 bg-primary">1</div>
+            <div class="col-4 offset-3 bg-danger">2</div>
+            <div class="col-6 offset-1 bg-secondary">3</div>
+        </div>
+        <div class="row">
+            <!-- Com responsividade -->
+            <div class="col-md-3 offset-md-7 bg-primary">1</div>
+            <div class="col-md-4 offset-md-3 bg-danger">2</div>
+            <div class="col-md-6 offset-md-1 bg-secondary">3</div>
+        </div>
+    </div>
+
+    <h1 class="mt-5">6. Alinhamento</h1>
+    <hr>
+
+    <!-- Alinhamento -->
+    <!-- Como por baixo dos panos o sistema de Grid do Bootstrap é usando o Flexbox,
+         algumas propriedades do flexbox você pode usar como o 'align-self' -->
+    <div class="container-fluid">
+        <div class="row h-300"> <!-- Essa classe 'h-300' foi criada para exemplificar -->
+            <div class="col-4 align-self-end bg-primary">Diga</div>
+            <div class="col-4 align-self-center bg-danger">Olá</div>
+            <div class="col-4 align-self-start bg-info">Mundo</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .exercicio div {
+        font-size: 1.5em;
+    }
+
+    .h-300 {
+        height: 300px;
+    }
+</style>
