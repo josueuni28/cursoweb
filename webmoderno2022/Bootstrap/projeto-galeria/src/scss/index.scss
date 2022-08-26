@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+// O sinal de '~' referência o pasta 'node_modules'
+
+$fa-font-path: "~font-awesome/fonts";
+// Sobrescrevendo a variável do font-awesome para informar um novo caminho para as fontes
+
+@import "~font-awesome/scss/font-awesome";
+// Importando o 'font-awesome'
+
+@import "custom";
+// Importando o arquivo scss 'custom.scss'
