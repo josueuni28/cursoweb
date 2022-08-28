@@ -10,6 +10,14 @@ import Multiplos, { Pergunta1 } from './components/Multiplos';
    ou pegar o Objeto que foi 'gerado' no 'export default {}', nesse caso colocamos o nome
    de 'Multiplos', mas pode ser qualquer nome */
 
+import Saudacao from './components/Saudacao';
+import Saudacao2 from './components/Saudacao2';
+
+import Pai from './components/Pai';
+
+import Pai2 from './components/Pai2';
+import Filho from './components/Filho';
+
 
 import reportWebVitals from './reportWebVitals';
 
@@ -25,6 +33,17 @@ root.render(
     <Pergunta1 nome="Alice" />
     <br />
     <Multiplos.Pergunta2 nome="Paloma" />
+    <hr />
+    <Saudacao tipo="Bom Dia" nome="Jorge" />
+    <hr />
+    <Saudacao2 tipo="Bom Tarde" nome="Camila" />
+    <hr />
+    <Pai nome="Luiz" sobrenome="Guimarões" />
+    <hr />
+    <Pai2 nome="Cesar" sobrenome="Oasis">
+      <Filho nome="Augusto"/>
+      <Filho nome="Lorena"/>
+    </Pai2>
   </>
 );
 
