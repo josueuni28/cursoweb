@@ -1,14 +1,14 @@
 {
-    "users": [
-        {
-            "id":1,
-            "name":"Rosana Aguiar",
-            "email":"ro25@gmail.com"
-        },
-        {
-            "id":2,
-            "name":"Junior Donatto Figueira",
-            "email":"figueiraDJ@gmail.com"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Rosana Aguiar",
+      "email": "ro25@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Junior Donatto Figueira",
+      "email": "figueiraDJ@gmail.com"
+    }
+  ]
 }

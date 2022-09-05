@@ -16,3 +16,17 @@ aside.menu-area {
 .menu a:hover {
     background: linear-gradient(90deg, #195e83 0%, var(--bg-dark) 100%)
 }
+
+@media (max-width: 768px) {
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    }
+
+    .menu a {
+        display: inline;
+        padding: 10px;
+    }
+}
