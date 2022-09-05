@@ -1,0 +1,6 @@
+/* Você pode criar quantos estilos globais precisar, apenas precisa referênciar eles em "_app.jsx" */
+p {
+    background-color: black;
+    color: yellow;
+    padding: 10px 5px;
+}

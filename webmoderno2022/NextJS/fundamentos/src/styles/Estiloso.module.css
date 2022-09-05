@@ -1,0 +1,17 @@
+.teste {
+    background-color: blueviolet;
+    color: white;
+}
+
+/* Diferente dos estilos Globais, estilos modularizados precisam de ser envolvidos dentro de uma
+   classe ou id, você não pode aplicar diretamente, ex: h1 { //... }, precisa ser nesse caso,
+   .teste h1 { //... } */
+.teste h1 {
+    margin: 0;
+}
+
+.teste a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: darkorange;
+}
