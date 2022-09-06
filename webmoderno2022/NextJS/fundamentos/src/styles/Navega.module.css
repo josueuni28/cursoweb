@@ -1,0 +1,15 @@
+.navegador {
+    padding: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: 10px;
+    border: solid 1px #a59fcf;
+    box-shadow: inset 0px 0px 10px white, 1px 1px 3px #000;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.navegador:hover {
+    box-shadow: inset 0px 0px 10px #8d8d8d;
+    border-color: black;
+}

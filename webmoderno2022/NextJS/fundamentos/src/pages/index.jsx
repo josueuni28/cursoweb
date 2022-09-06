@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+
 // Importando o metodo "Link" do Next para fazer a navegação, é mais rápido, apropriado para fazer aplicação SPA
+
+import Navega from '../components/Navega'
 
 export default function Home() {
   return (
@@ -13,66 +14,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main>
 
-      <h2>
-        <Link href="/jsx">[LINK] Sobre o JSX (Clique aqui para navegar)</Link>
-      </h2>
-      <h2>
-        <Link href="/estiloso">[LINK] Estilos Modularizados (Clique aqui para navegar)</Link>
-      </h2>
-      <h2>
-        <Link href="/usandocomponentes">[LINK] Usando Componentes (Clique aqui para navegar)</Link>
-      </h2>
+        <Navega destino='/jsx' texto='[Exemplo] Sobre o JSX (Clique aqui para navegar)' />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.jsx</code>
-        </p>
+        <Navega destino="/estiloso" texto="[Exemplo] Estilos Modularizados (Clique aqui para navegar)" cor="coral" />
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <Navega destino="/usandocomponentes" texto="[Exemplo] Usando Componentes (Clique aqui para navegar)" cor="chartreuse" />
+        
+        {/* Nesse caso como a pasta já tem um arquivo "index.jsx", não precisa referenciar ele */}
+        <Navega destino="/navegacao" texto="[Exemplo] Navegação #01" cor="#ffeb3b" />
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <Navega destino="/cliente/SP/234" texto="[Exemplo] Navegação #02" cor="#ffeb3b" />
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/josueuni28"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            Josué Leite de Souza
           </span>
         </a>
       </footer>
