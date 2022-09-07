@@ -16,16 +16,26 @@ export default function Home() {
 
       <main>
 
-        <Navega destino='/jsx' texto='[Exemplo] Sobre o JSX (Clique aqui para navegar)' />
+        <Navega destino='/jsx' texto='[Exemplo] Sobre o JSX (Clique para navegar)' />
 
-        <Navega destino="/estiloso" texto="[Exemplo] Estilos Modularizados (Clique aqui para navegar)" cor="coral" />
+        <Navega destino="/estiloso" texto="[Exemplo] Estilos Modularizados" cor="coral" />
 
-        <Navega destino="/usandocomponentes" texto="[Exemplo] Usando Componentes (Clique aqui para navegar)" cor="chartreuse" />
+        <Navega destino="/usandocomponentes" texto="[Exemplo] Usando Componentes" cor="chartreuse" />
         
         {/* Nesse caso como a pasta já tem um arquivo "index.jsx", não precisa referenciar ele */}
         <Navega destino="/navegacao" texto="[Exemplo] Navegação #01" cor="#ffeb3b" />
 
         <Navega destino="/cliente/SP/234" texto="[Exemplo] Navegação #02" cor="#ffeb3b" />
+
+        <Navega destino="/estado" texto="[Exemplo] Componente com Estado" cor="pink" />
+
+        <Navega destino="/api/clientes" texto="[Exemplo] API #01" cor="#d351ef" />
+
+        <Navega destino="/api/clientes/123" texto="[Exemplo] API #02 (Passando parâmetros)" cor="#d351ef" />
+
+        <Navega destino="/integracao" texto="[Exemplo] Integração com a API" cor="#ff9800" />
+
+        <Navega destino="/estatico" texto="[Exemplo] Conteúdo Estático" />
 
       </main>
 
