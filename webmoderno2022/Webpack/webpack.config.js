@@ -3,8 +3,8 @@ const modoDev = process.env.NODE_ENV !== 'production'
 // O 'NODE_ENV' foi configurado no 'package.json', setado quando colocar o script 'run build'
 const webpack = require('webpack') // Chamando o Webpack
 const miniCssExtract = require('mini-css-extract-plugin')
-const uglifyJs = require('uglifyjs-webpack-plugin')
-const optimizeCss = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const optimizeCss = require('css-minimizer-webpack-plugin')
 
 // Configurações do Webpack:
 module.exports = {
@@ -16,14 +16,16 @@ module.exports = {
         path: __dirname + '/public' // O padrão é '/dist'
     },
     devServer: { // Configurando o servidor de desenvolvimento
-        contentBase: "./public",
+        static: "./public",
         port: 3000
     },
     optimization: {
         minimizer: [
-            new uglifyJs({ // É opcional já que o Webpack mimifica por padrão o JS no modo 'production'
-                cache: true,
-                parallel: true // Para mimificar mais rápido
+            new TerserPlugin({ // É opcional já que o Webpack mimifica por padrão o JS no modo 'production'
+                parallel: true, // Para mimificar mais rápido
+                terserOptions: {
+                    ecma: 6,
+                },
             }),
             new optimizeCss({}) // Para mimificar o CSS
         ]

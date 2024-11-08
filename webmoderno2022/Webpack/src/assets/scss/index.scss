@@ -1,4 +1,7 @@
-$cor-botao-padrao: #fff;
-$cor-bg-padrao: blue;
+@use 'base';
 
-@import 'botao'
+.botao {
+    background-color: base.$cor-bg-padrao;
+    color: base.$cor-botao-padrao;
+    font-size: 1.8em;
+}
