@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/josueuni28/cursoweb/issues"
   },
-  "homepage": "https://github.com/josueuni28/cursoweb#readme"
+  "homepage": "https://github.com/josueuni28/cursoweb#readme",
+  "devDependencies": {
+    "jquery": "^3.7.1"
+  }
 }
