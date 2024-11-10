@@ -9,6 +9,11 @@
       "id": 2,
       "name": "Junior Donatto Figueira",
       "email": "figueiraDJ@gmail.com"
+    },
+    {
+      "name": "Josue",
+      "email": "josueteste@gmail.com",
+      "id": 3
     }
   ]
 }
