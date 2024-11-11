@@ -1,7 +1,18 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import Tabela from '../components/Tabela'
+import Cliente from '../core/Cliente'
 
 export default function Home() {
+
+  const clientes = [
+    new Cliente('Ana', 34, '1'),
+    new Cliente('Marcos', 18, '2'),
+    new Cliente('Roberto', 62, '3'),
+    new Cliente('Luana', 25, '4'),
+    new Cliente('Marta', 57, '5'),
+  ]
+
   return (
     <div className={`
       flex h-screen justify-center items-center
@@ -9,7 +20,7 @@ export default function Home() {
       text-white
     `}>
       <Layout titulo='Cadastro Simples'>
-        <span>Conteúdo</span>
+        <Tabela clientes={clientes}></Tabela>
       </Layout>
     </div>
   )
