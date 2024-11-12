@@ -3,9 +3,13 @@ import { IconeEdicao, IconeExclusao } from "./Icones"
 
 interface TabelaPropos {
     clientes: Cliente[]
+    clienteEditar?: (cliente: Cliente) => void
+    clienteExcluir?: (cliente: Cliente) => void
 }
 
 export default function Tabela(props: TabelaPropos) {
+
+    const exibirAcoes = props.clienteExcluir || props.clienteEditar
 
     function renderizarCabecalho(){
         return (
@@ -13,16 +17,30 @@ export default function Tabela(props: TabelaPropos) {
                 <th className="text-left p-4">Código</th>
                 <th className="text-left p-4">Nome</th>
                 <th className="text-left p-4">Idade</th>
-                <th className="p-4">Ações</th>
+                {exibirAcoes ? <th className="p-4">Ações</th> : false}
             </tr>
         )
     }
 
     function renderizarAcoes(cliente: Cliente){
         return (
-            <td>
-            <button className="h-6 w-6">{IconeEdicao}</button>
-            <button className="vh-6 w-6">{IconeExclusao}</button>
+            <td className="flex justify-center">
+                {props.clienteEditar ? (
+                    <button onClick={() => props.clienteEditar?.(cliente)} className={`
+                        h-11 w-11
+                        flex justify-center items-center 
+                        text-green-600 rounded-full p-2 m-1
+                        hover:bg-purple-50
+                    `}>{IconeEdicao}</button>
+                ) : false}
+                {props.clienteExcluir ? (
+                    <button onClick={() => props.clienteExcluir?.(cliente)} className={`
+                        h-11 w-11
+                        flex justify-center items-center 
+                        text-red-500 rounded-full p-2 m-1
+                        hover:bg-purple-50
+                    `}>{IconeExclusao}</button>
+                ) : false}
             </td>
         )
     }
@@ -36,7 +54,7 @@ export default function Tabela(props: TabelaPropos) {
                     <td className="text-left p-4">{cliente.id}</td>
                     <td className="text-left p-4">{cliente.nome}</td>
                     <td className="text-left p-4">{cliente.idade}</td>
-                    {renderizarAcoes(cliente)}
+                    {exibirAcoes ? renderizarAcoes(cliente) : false}
                 </tr>
             )
         })

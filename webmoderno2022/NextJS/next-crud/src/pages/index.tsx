@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Tabela from '../components/Tabela'
 import Cliente from '../core/Cliente'
+import Botao from '../components/Botao'
 
 export default function Home() {
 
@@ -13,6 +14,14 @@ export default function Home() {
     new Cliente('Marta', 57, '5'),
   ]
 
+  function veClienteEditar (cliente: Cliente){
+    console.log(cliente.nome)
+  }
+
+  function veClienteExcluir (cliente: Cliente){
+    console.log(cliente.nome)
+  }
+
   return (
     <div className={`
       flex h-screen justify-center items-center
@@ -20,7 +29,10 @@ export default function Home() {
       text-white
     `}>
       <Layout titulo='Cadastro Simples'>
-        <Tabela clientes={clientes}></Tabela>
+        <div className='flex justify-end'>
+          <Botao cor='green' className='mb-4'>Novo Cliente</Botao>
+        </div>
+        <Tabela clientes={clientes} clienteEditar={veClienteEditar} clienteExcluir={veClienteExcluir}></Tabela>
       </Layout>
     </div>
   )
