@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Link do Canal?</a></p>
+        <p><a v-bind:href="link">Link funcionando</a></p>
+        <!-- Outra forma de fazer o 'bind', de forma reduzida -->
+        <p><a :href="link">Link funcionando também</a></p>
+        <p>
+            <!-- Utilizando a propriedade 'v-model' ele atualiza a propriedade de 'data' -->
+            <input type="text" v-model:value="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+        <p>
+            <!-- Usando 'Watch' do Vue para monitar uma propriedade, e disparar um evento quando
+                 a propriedade é alterada -->
+            <input type="text" v-model:value="texto"><br>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                link: 'http://youtube.com.br/cod3rcursos',
+                nome: 'Maria',
+                texto: 'Edite-me'
+            },
+            watch: {
+                texto(valor){
+                    alert('Texto alterado!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ contador }}</p>
+        <!-- O 'v-on' dispara funções quando um evento é acionado -->
+        <p><button v-on:click="maisUm">Acrescentar +1</button></p>
+        <!-- A forma de escrever 'v-ou' de forma reduzida é colocando o '@' ao invés do 'v-on'  -->
+        <p><button @click="contador--">Reduzir -1</button></p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas X:{{ x }} e Y:{{ x }}
+            <!-- O '.stop' interrompe a função do evento -->
+            <span @mousemove.stop><i>Não monitar aqui!</i></span>
+        </p>
+        <p>
+            <!-- Usando o 'keyUp' apenas com a tecla 'Enter' -->
+            <input type="text" @keyup.enter="alerta" placeholder="Aperte o 'Enter' aqui...">
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                contador: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                maisUm(){
+                    this.contador++
+                },
+                atualizarPosicao(e){
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta(){
+                    alert('Voce pressionou a tecla "Enter"!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
