@@ -10,9 +10,37 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <!-- Criando um Gerador de QRCode, utilizando da propriedade 'computed' do VueJS
+             para sempre trazer os dados atualizados -->
+        <h1>{{ titulo }}</h1>
+        <div>
+            <input type="text" size="28" :value="texto" @input="onData" placeholder="Digite para gerar o QRCode...">
+        </div>
+        <div v-if="texto" class="output">
+            <img :src="newQRcode" alt="QRCode">
+        </div>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Gerador de QRCode!',
+                texto: 'http://www.cod3r.com.br',
+                qrcode: new QRious({ size: 300 })
+            },
+            computed: {
+                newQRcode(){
+                    this.qrcode.value = this.texto
+                    return this.qrcode.toDataURL()
+                }
+            },
+            methods: {
+                onData(e){
+                    this.texto = e.target.value
+                }
+            }
+        })
     </script>
 </body>
 
