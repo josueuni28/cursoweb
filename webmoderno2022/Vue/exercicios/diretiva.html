@@ -7,9 +7,25 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <!-- Utilizando 'diretivas' personalizadas no VueJS para realizar uma função específica -->
+    <div id="app">
+        <h3>Inverter texto do Input</h3>
+        <input type="text" v-model="nome" placeholder="Escreva aqui..."><br>
+        <span v-inverter="nome"></span>
+    </div>
     <script>
-        // ...
+        Vue.directive('inverter', {
+            componentUpdated(el, binding){
+                const invertido = binding.value.split('').reverse().join('')
+                el.innerText = invertido
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                nome: ''
+            }
+        })
     </script>
 </body>
 </html>

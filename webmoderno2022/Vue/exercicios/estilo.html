@@ -9,12 +9,30 @@
         .vermelho {
             background-color: red;
         }
+        #app > p{
+            padding: 10px;
+            cursor: pointer;
+        }
+        #app > p > i {
+            font-size: 16px;
+        }
     </style>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <!-- Usando o evento do 'clique' para alterar o valor da propriedade 'aplicarCor',
+             e lendo a propriedade para aplicar a classe CSS 'vermelho', caso estiver 'true' -->
+        <p @click="aplicarCor = !aplicarCor" :class="{'vermelho': aplicarCor}">
+            Alternando estilo CSS <i>(Clique no texto para alternar)</i>
+        </p>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                aplicarCor: false
+            }
+        })
     </script>
 </body>
 </html>

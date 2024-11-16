@@ -7,9 +7,22 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-    
+    <!-- Usando 'template' para adicionar elementos em uma 'tag' de forma 'indireta' pelo próprio Vue -->
+    <div id="app"></div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                titulo: 'VueJS',
+                subtitulo: 'Framework progressivo'
+            },
+            template: `
+                <div>
+                    <h1>{{ titulo }}</h1>
+                    <h3>{{ subtitulo }}</h3>
+                </div>
+            `
+        })
     </script>
 </body>
 </html>

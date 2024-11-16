@@ -5,11 +5,65 @@
     <title>Componente</title>
     <link rel="stylesheet" href="/css/estilo.css">
     <script src="/js/vue.min.js"></script>
+    <style>
+        .amarelo {
+            color: yellow;
+        }
+        .valor {
+            color: yellowgreen;
+        }
+        span.exibe {
+            color:aqua;
+            font-size: 22px;
+            padding: 20px;
+            text-shadow: 1px 1px 1px black;
+        }
+        div.contar:hover {
+            background-color: black;
+            cursor: pointer;
+        }
+        div.componente{
+            margin-bottom: 40px;
+            border: 2px solid white;
+            box-sizing: border-box;
+            padding: 10px;
+
+            -webkit-touch-callout: none;  /* iPhone OS, Safari */
+            user-select: none;
+        }
+    </style>
 </head>
 <body class="exercicio">
+<!-- Criando componentes VueJS, eles possuem suas propriedades individuais e separadas  -->
+<div id="app">
+    <saudacao nome="Ana" sobrenome="Martins"></saudacao>
+    <saudacao nome="Roberta" sobrenome="De Souza"></saudacao>
+    <saudacao nome="Carlos" sobrenome="Rodriges"></saudacao>
+</div>
+<script>
+    Vue.component('saudacao', {
+        props: ['nome', 'sobrenome'],
+        data: function(){
+            return {
+                contador: 0
+            }
+        },
+        methods: {
+            conta(){
+                this.contador++
+            }
+        },
+        template: `
+            <div class="componente contar" @click="conta">
+                <span class="amarelo">Bom dia</span> {{ nome }} <i>{{ sobrenome }}</i> !<br>
+                <span class="exibe">Contador de {{ nome }}: <span class="valor">{{ contador }}</span></span>
+            </div>
+        `  
+    })
 
-    <script>
-        // ...
-    </script>
+    new Vue ({
+        el: '#app'
+    })
+</script>
 </body>
 </html>
