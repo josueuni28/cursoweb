@@ -10,15 +10,16 @@
 
 <body>
     <div id="app">
-        <div class="container">
+        <!-- <div class="container">
             <h1 class="m-3">{{ titulo }}</h1>
-            <botao vecomponente="relatory" label="Relatório"></botao>
-            <botao vecomponente="item" label="Itens"></botao>
-            <relatorio :visivel="relatorioVisivel"></relatorio>
-            <itens :visivel="itensVisivel"></itens>
-            <!-- passando o valor da diretiva 'v-money' junto com as aspas simples ('')
-            para que o VueJS interprete o valor como um 'string' e não como uma propriedade Vue -->
-        </div>
+            <botao label="Relatório" @onClickBtn="alerta"></botao>
+            <botao label="Itens" @onClickBtn="alerta"></botao>
+            <relatorio v-if="vec = 'relat'"></relatorio>
+            <itens v-else></itens>
+            <component v-bind:is="componenteVisivel"></component>
+            passando o valor da diretiva 'v-money' junto com as aspas simples ('')
+            para que o VueJS interprete o valor como um 'string' e não como uma propriedade Vue
+        </div> -->
     </div>
     <script>
     Vue.directive('money', {
@@ -28,137 +29,252 @@
         }
     })
 
-    Vue.component('botao', {
-        props: ['vecomponente', 'label'],
-        methods: {
-            alerta(){
-                const mostraCompo = (this.vecomponente == 'relatory') ? 'Mostra o Relatório!' : 'Monstra Itens!'
-                alert(mostraCompo)
-            }
-        },
-        template: `
-            <button type="button" class="btn btn-primary" @click="alerta">{{ label }}</button>
-        `
-    })
+    // Vue.component('botao', {
+    //     props: ['label'],
+    //     template: `
+    //         <button type="button" @click="vec = 'iten'" class="btn btn-primary">{{ label }}</button>
+    //     `
+    // })
 
-    Vue.component('relatorio', {
-        props: {
-            visivel: {type: Boolean}
-        },
-        data: function(){
-            return {
-                sales: 0,
-            }
-        },
-        methods: {
-            getSales(){
-                fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
-            },
-            calculateTotal(sales){
-                if(!sales) return 0
-                return sales.reduce((total, sale) => total + sale.value, 0)
-            }
-        },
-        template: `
-            <table v-if="visivel" class="mt-5 table" v-if="salesByProduct">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(sale, index) in salesByProduct">
-                        <td>#{{ index + 1 }}</td>
-                        <td>{{ sale.name }}</td>
-                        <td v-money="'R$'">{{ sale.value }}</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>+</td>
-                        <td>Total</td>
-                        <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
-                    </tr>
-                </tfoot>
-            </table>
-        `,
-        computed: {
-            salesByProduct(){
-                if(!this.sales) return null
+    // Vue.component('relatorio', {
+    //     data: function(){
+    //         return {
+    //             sales: 0,
+    //         }
+    //     },
+    //     methods: {
+    //         getSales(){
+    //             fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
+    //         },
+    //         calculateTotal(sales){
+    //             if(!sales) return 0
+    //             return sales.reduce((total, sale) => total + sale.value, 0)
+    //         }
+    //     },
+    //     template: `
+    //         <table class="mt-5 table" v-if="salesByProduct">
+    //             <thead>
+    //                 <tr>
+    //                     <th>ID</th>
+    //                     <th>Nome</th>
+    //                     <th>Total</th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody>
+    //                 <tr v-for="(sale, index) in salesByProduct">
+    //                     <td>#{{ index + 1 }}</td>
+    //                     <td>{{ sale.name }}</td>
+    //                     <td v-money="'R$'">{{ sale.value }}</td>
+    //                 </tr>
+    //             </tbody>
+    //             <tfoot>
+    //                 <tr>
+    //                     <td>+</td>
+    //                     <td>Total</td>
+    //                     <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
+    //                 </tr>
+    //             </tfoot>
+    //         </table>
+    //     `,
+    //     computed: {
+    //         salesByProduct(){
+    //             if(!this.sales) return null
 
-                const salesByProduct = this.sales.reduce((grouped, sale) => {
-                    if(!grouped.hasOwnProperty(sale.name)) {
-                        grouped[sale.name] = {
-                            name: sale.name,
-                            value: sale.price * sale.qtde
-                        }
-                    }else{
-                        grouped[sale.name].value += sale.price * sale.qtde
-                    }
+    //             const salesByProduct = this.sales.reduce((grouped, sale) => {
+    //                 if(!grouped.hasOwnProperty(sale.name)) {
+    //                     grouped[sale.name] = {
+    //                         name: sale.name,
+    //                         value: sale.price * sale.qtde
+    //                     }
+    //                 }else{
+    //                     grouped[sale.name].value += sale.price * sale.qtde
+    //                 }
 
-                    return grouped
-                }, {})
+    //                 return grouped
+    //             }, {})
 
-                return Object.values(salesByProduct)
-            }
-        },
-        mounted() {
-            // A função 'mounted' é acionada pelo VueJS sempre que ele termina de 'montar' um objeto Vue.
-            // ... Assim você pode executar ações quando um componente/objeto Vue tiver sido criado.
-            if(this.visivel) this.getSales()
-            //alert(this.visivel)
-        }
-    })
+    //             return Object.values(salesByProduct)
+    //         }
+    //     },
+    //     mounted() {
+    //         // A função 'mounted' é acionada pelo VueJS sempre que ele termina de 'montar' um objeto Vue.
+    //         // ... Assim você pode executar ações quando um componente/objeto Vue tiver sido criado.
+    //         this.getSales()
+    //         //alert(this.visivel)
+    //     }
+    // })
 
-    Vue.component('itens', {
-        props: {
-            visivel: {type: Boolean}
-        },
-        data: function(){
-            return {
-                sales: 0,
-            }
-        },
-        methods: {
-            getSales(){
-                fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
-            }
-        },
-        template: `
-            <table v-if="visivel" class="mt-5 table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Qtde</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="sale in sales">
-                        <td>{{ sale.id }}</td>
-                        <td>{{ sale.name }}</td>
-                        <td v-money="'R$'">{{ sale.price }}</td>
-                        <td>{{ sale.qtde }}</td>
-                        <td>{{ sale.date }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        `,
-        mounted() {
-            if(this.visivel) this.getSales()
-        }
-    })
+    // Vue.component('itens', {
+    //     data: function(){
+    //         return {
+    //             sales: 0,
+    //         }
+    //     },
+    //     methods: {
+    //         getSales(){
+    //             fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
+    //         }
+    //     },
+    //     template: `
+    //         <table class="mt-5 table">
+    //             <thead>
+    //                 <tr>
+    //                     <th>ID</th>
+    //                     <th>Nome</th>
+    //                     <th>Preço</th>
+    //                     <th>Qtde</th>
+    //                     <th>Data</th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody>
+    //                 <tr v-for="sale in sales">
+    //                     <td>{{ sale.id }}</td>
+    //                     <td>{{ sale.name }}</td>
+    //                     <td v-money="'R$'">{{ sale.price }}</td>
+    //                     <td>{{ sale.qtde }}</td>
+    //                     <td>{{ sale.date }}</td>
+    //                 </tr>
+    //             </tbody>
+    //         </table>
+    //     `,
+    //     mounted() {
+    //         this.getSales()
+    //     }
+    // })
     
     new Vue({
         el: '#app',
         data: {
             titulo: 'Relatorio de Vendas',
-            relatorioVisivel: true,
-            itensVisivel: false
+            vec: 'relat',
+            btnRelatorio: true,
+            btnItens: false
+        },
+        methods: {
+            alerta(){
+                alert('ola mundo')
+            }
+        },
+        components: {
+            'relatorio': {
+                data: function(){
+                    return {
+                        sales: 0,
+                    }
+                },
+                methods: {
+                    getSales(){
+                        fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
+                    },
+                    calculateTotal(sales){
+                        if(!sales) return 0
+                        return sales.reduce((total, sale) => total + sale.value, 0)
+                    }
+                },
+                template: `
+                    <table class="mt-5 table" v-if="salesByProduct">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(sale, index) in salesByProduct">
+                                <td>#{{ index + 1 }}</td>
+                                <td>{{ sale.name }}</td>
+                                <td v-money="'R$'">{{ sale.value }}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>+</td>
+                                <td>Total</td>
+                                <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                `,
+                computed: {
+                    salesByProduct(){
+                        if(!this.sales) return null
+
+                        const salesByProduct = this.sales.reduce((grouped, sale) => {
+                            if(!grouped.hasOwnProperty(sale.name)) {
+                                grouped[sale.name] = {
+                                    name: sale.name,
+                                    value: sale.price * sale.qtde
+                                }
+                            }else{
+                                grouped[sale.name].value += sale.price * sale.qtde
+                            }
+
+                            return grouped
+                        }, {})
+
+                        return Object.values(salesByProduct)
+                    }
+                },
+                mounted() {
+                    // A função 'mounted' é acionada pelo VueJS sempre que ele termina de 'montar' um objeto Vue.
+                    // ... Assim você pode executar ações quando um componente/objeto Vue tiver sido criado.
+                    this.getSales()
+                    //alert(this.visivel)
+                }
+            },
+            'itens': {
+                data: function(){
+                    return {
+                        sales: 0,
+                    }
+                },
+                methods: {
+                    getSales(){
+                        fetch('/data/sales.json').then(resp => resp.json()).then(data => this.sales = data)
+                    }
+                },
+                template: `
+                    <table class="mt-5 table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Qtde</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="sale in sales">
+                                <td>{{ sale.id }}</td>
+                                <td>{{ sale.name }}</td>
+                                <td v-money="'R$'">{{ sale.price }}</td>
+                                <td>{{ sale.qtde }}</td>
+                                <td>{{ sale.date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `,
+                mounted() {
+                    this.getSales()
+                }
+            }
+        },
+        template: `
+                <div class="container">
+                    <h1 class="m-3">{{ titulo }}</h1>
+                    <button class="btn" @click="vec = 'relat'" :class="[btnRelatorio ? 'btn-dark' : 'btn-primary']"">Relatório</button>
+                    <button class="btn" @click="vec = 'item'" :class="[btnItens ? 'btn-dark' : 'btn-primary']">Itens</button>
+                    <component :is="vec == 'relat' ? 'relatorio' : 'itens'" />
+                </div>
+        `,
+        watch: {
+            vec(valor){
+                console.log(`"vec" alterado para "'${valor}'`)
+                this.btnRelatorio = (valor == 'relat') ? true : false
+                this.btnItens = (valor == 'item') ? true : false
+            }
         }
     })
     </script>
