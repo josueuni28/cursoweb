@@ -1,4 +1,6 @@
-# montyhall
+# Monty Hall
+
+Desenvolvimento de 'Jogo' referente ao Problema de Monty Hall.
 
 ## Project setup
 ```
