@@ -1,5 +1,6 @@
 {
   "name": "most-used-words",
+  "title": "Most Used Words",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -46,7 +47,9 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names":"off"
+    }
   },
   "browserslist": [
     "> 1%",
