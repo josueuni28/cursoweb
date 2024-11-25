@@ -1,4 +1,7 @@
-# most-used-words
+# Most Used Words
+Aplicação Desktop para contar a quantidade de palavras que aparecem em arquivos de legendas.
+
+Para a realização do projeto foi utilizado o framework VueJS, junto com Vuetify e Electron
 
 ## Project setup
 ```
