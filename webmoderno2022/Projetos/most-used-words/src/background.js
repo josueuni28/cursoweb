@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, Menu, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -10,6 +10,32 @@ import './backend'
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
+
+const template = [
+  {
+    label: 'Menu',
+    submenu: [
+      {
+        label: 'Sobre a Aplicação...',
+        click: async () => {
+          const { shell } = require('electron')
+          await shell.openExternal('https://github.com/josueuni28/cursoweb/tree/main/webmoderno2022/Projetos/most-used-words')
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Sair',
+        click: function() {
+            app.quit()
+        }
+      }
+    ]
+  }
+]
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
 
 async function createWindow() {
   // Create the browser window.

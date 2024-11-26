@@ -7,10 +7,14 @@ const groupWords = require('./groupWords')
 // O Electron no Projeto é como se fosse o 'BackEnd' da aplicação e o VueJS o 'FrontEnd'.
 
 ipcMain.on('process-subtitles', (event, dados) => {
-    pathsToRows(dados)
-    .then(rows => prepareData(rows))
-    .then(preparedData => groupWords(preparedData))
-    .then(groupedWords => {
-        event.reply('process-subtitles', groupedWords)
-    })
+    if(dados.length > 0){
+        pathsToRows(dados)
+        .then(rows => prepareData(rows))
+        .then(preparedData => groupWords(preparedData))
+        .then(groupedWords => {
+            event.reply('process-subtitles-reply', groupedWords)
+        })
+    }else{
+        event.reply('process-subtitles-reply', 'eNull')
+    }
 })

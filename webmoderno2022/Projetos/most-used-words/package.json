@@ -1,7 +1,7 @@
 {
   "name": "most-used-words",
   "title": "Most Used Words",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -19,8 +19,9 @@ function filterRowValid(row){
     const notNumber = !parseInt(row.trim())
     const notEmply = !!row.trim()
     const notInterval = !row.includes('-->')
+    const notUrl = !row.includes('www')
 
-    return notNumber && notEmply && notInterval
+    return notNumber && notEmply && notInterval && notUrl
 }
 
 function removePontuation(row){
