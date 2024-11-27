@@ -1,0 +1,24 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "nome": "Caneta Azul",
+            "preço": 1.50
+        },
+        {
+            "id": 2,
+            "nome": "Caderno Moderno",
+            "preço": 25.79
+        },
+        {
+            "id": 3,
+            "nome": "Pacote de Folha A4",
+            "preço": 30.00
+        },
+        {
+            "id": 4,
+            "nome": "Lapizeira Agil",
+            "preço": 7.90
+        }
+    ]
+}
